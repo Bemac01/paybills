@@ -4,8 +4,7 @@ namespace App\Core;
 
 class Request
 {
-    public static function base()
-    {
-       return $_SERVER['SCRIPT_NAME'];
+    public static function base(){
+        return $_SERVER['SCRIPT_NAME'];
     }
 }

@@ -9,9 +9,29 @@ class Route
     //Handlers method
     public static function routeHandler($uri, $controlargs, $method)
     {
+        //convert Uri to preg
+        if(preg_match_all('/\{[a-zA-Z0-9]+\}/', $uri, $matches))
+        {
+            $uri2 = preg_replace('/\{[a-zA-Z0-9]+\}/','([a-zA-Z0-9]+)', $uri);
+
+            //escape
+            $uri2 = str_replace('/','\/', $uri2);
+
+            //start and end
+            $uri2 = '/^'. $uri2 . '/$';
+        }
+        else
+        {
+           $uri2 = $uri;
+           $matches = false;
+
+        }
+
         //save route
         self::$routes[] = [
             "uri"=> $uri,
+            "preg" => $uri2,
+            "matches" => $matches,
             "controlargs"=> $controlargs,
             "method"=> $method
         ];
@@ -67,6 +87,32 @@ class Route
     //run
     public static function run()
     {
-        echo "Running";
+        //check if route is empty
+        if(empty(self::$routes))
+        {
+            self::notFound();
+            return; 
+        }
+
+        //current method
+        $method = Request::uri();
+        $uri = Request::uri();
+
+        //pageNot found 
+        $pageNotFound = [];
+
+        //loop through route
+        foreach(self::$routes as $route)
+        {
+            //check if matches is not false
+            if($route['matches'] !== false){
+                echo "match is found";
+            }
+            else{
+                echo 'Matches is false';
+                echo '<pre>';
+                var_dump($route);
+            }
+        }
     }
 }

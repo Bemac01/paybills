@@ -1,5 +1,7 @@
 <?php
 
 use App\Core\Session;
-include "vendor/autoload.php";
+require "vendor/autoload.php";
+require "app/route.php";
+
 

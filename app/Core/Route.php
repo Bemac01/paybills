@@ -67,6 +67,6 @@ class Route
     //run
     public static function run()
     {
-        echo "Runni"
+        echo "Running";
     }
 }

@@ -87,31 +87,34 @@ class Route
     //run
     public static function run()
     {
-        //check if route is empty
+        //check if route is not empty
         if(empty(self::$routes))
         {
             self::notFound();
-            return; 
+            return;
         }
+        //get current route methods 
+        $method = Request::method();
+        $uri = Request::uri();  
 
-        //current method
-        $method = Request::uri();
-        $uri = Request::uri();
-
-        //pageNot found 
+        //page not found array
         $pageNotFound = [];
 
-        //loop through route
+        //loop through routes 
         foreach(self::$routes as $route)
         {
-            //check if matches is not false
-            if($route['matches'] !== false){
-                echo "match is found";
+            //check if route not found
+            if($route['matches'] !== false)
+            {
+                //validation
+                echo 'Match is not false';
             }
-            else{
-                echo 'Matches is false';
+            else
+            {
+                echo 'Match is false';
                 echo '<pre>';
                 var_dump($route);
+                echo '</pre>';
             }
         }
     }

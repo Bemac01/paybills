@@ -76,6 +76,7 @@ class Route
     public static function notFoundHeader()
     {
         echo "No route found for this request";
+        exit;
     }
 
     //class not found
@@ -106,15 +107,31 @@ class Route
             //check if route not found
             if($route['matches'] !== false)
             {
-                //validation
-                echo 'Match is not false';
+                //check is the uri matches the preg
+                if(preg_match($route['preg'], $uri, $match))
+                {
+                    if($route['method'] == $method || $route['method'] === 'ANY' )
+                    {
+                         //No validation
+                    }
+                    else
+                    {
+                        self::notFoundHeader();
+                    }
+                    //page found
+                    $pageNotFound[] = false;
+                }
+                else
+                {
+                    $pageNotFound[] = true;
+                    //continue the loop
+                    continue;
+                }
+                
             }
             else
             {
-                echo 'Match is false';
-                echo '<pre>';
-                var_dump($route);
-                echo '</pre>';
+                
             }
         }
     }

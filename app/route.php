@@ -1,6 +1,7 @@
 <?php
 
 use App\Controller\HomeController;
+use App\Core\Request;
 use App\Core\Route;
 
 $route = new Route();
@@ -13,5 +14,11 @@ $route->get("/about", [HomeController::class,"about"]);
 
 $route->get("/contact-us", [HomeController::class,"contact"]);
 
+//inline function
+$route->get("/area/{id}/{title}", function (Request $request, $args){
+    echo "<pre>";
+    var_dump($args);
+    echo"</pre>";
+});
 
 $route->run();

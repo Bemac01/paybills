@@ -52,13 +52,13 @@ class Route
             $uri2 = '/^'. $uri2 . '$/';
 
             //get match data 
-            $match_data = [];
+            $matches_data = [];
 
             //loop through matches
             foreach($matches[0] as $match)
             {
                 $match = str_replace(['{', '}'], '', $match);
-                $match_data[$match] = null;
+                $matches_data[$match] = null;
             }
             //check if the preg matches the uri
             if(preg_match($uri2, Request::uri(), $matches))
@@ -66,20 +66,20 @@ class Route
                 //check if controller exist 
                 if(class_exists($controlargs[0]))
                 {
+                    
+                    
                     //check if method exist
-                    if(method_exists($controlargs[0], $match))
+                    if(method_exists($controlargs[0], $controlargs[1]))
                     {
+                        
                         //remove first match
                         array_shift($matches);
-                        //loop through matches
-                        foreach($matches as $key => $match)
-                        {
-                            //add to array
-                            $matches_data[$key] = $match;
-                        }
-                        //call controller 
-                        call_user_func_array($controlargs, $matches_data);
-                        return true;
+                       $matches = array_combine(array_keys($matches_data), $matches);
+
+                       //call method 
+                       $controller = new $controlargs[0];
+                       $controller->{$controlargs[1]}( new Request, $matches);
+                       return true;
                     }
                     else
                     {

@@ -2,25 +2,35 @@
 
 namespace App\Controller;
 
+use App\Core\Request;
+
 class HomeController
 {
 
     //index method
-    public static function index()
+    public static function index(Request $request)
 
     {
         echo "Homepage";
     }
 
     //about method
-    public static function about()
+    public static function about(Request $request)
     {
         echo "about";
     }
 
     //contact method
-    public static function contact()
+    public static function contact(Request $request)
     {
         echo "contact";
+    }
+
+    public static function blog(Request $request, $args)
+    {
+        echo 'blog';
+        echo '<pre>';
+        var_dump($args);
+        echo '</pre>';
     }
 }

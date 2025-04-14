@@ -10,15 +10,15 @@ class Route
     public static function routeHandler($uri, $controlargs, $method)
     {
         //convert Uri to preg
-        if(preg_match_all('/\{[a-zA-Z0-9]+\}/', $uri, $matches))
+        if(preg_match_all('/\{[a-zA-Z0-9-_]+\}/', $uri, $matches))
         {
-            $uri2 = preg_replace('/\{[a-zA-Z0-9]+\}/','([a-zA-Z0-9]+)', $uri);
+            $uri2 = preg_replace('/\{[a-zA-Z0-9-_]+\}/','([a-zA-Z0-9-_]+)', $uri);
 
             //escape
             $uri2 = str_replace('/','\/', $uri2);
 
             //start and end
-            $uri2 = '/^'. $uri2 . '/$';
+            $uri2 = '/^'. $uri2 . '$/';
         }
         else
         {
@@ -29,16 +29,87 @@ class Route
 
         //save route
         self::$routes[] = [
-            "uri"=> $uri,
+            "uri" => $uri,
             "preg" => $uri2,
             "matches" => $matches,
-            "controlargs"=> $controlargs,
-            "method"=> $method
+            "controlargs" => $controlargs,
+            "method" => $method
         ];
     }
 
+    //validate URL
+    public static function validateURL($uri, $controlargs)
+    {
+        //check preg pass
+        if(preg_match_all('/\{[a-zA-Z0-9-_]+\}/', $uri, $matches))
+        {
+            $uri2 = preg_replace('/\{[a-zA-Z0-9-_]+\}/','([a-zA-Z0-9-_]+)', $uri);
+
+            //escape
+            $uri2 = str_replace('/','\/', $uri2);
+
+            //start and end
+            $uri2 = '/^'. $uri2 . '$/';
+
+            //get match data 
+            $match_data = [];
+
+            //loop through matches
+            foreach($matches[0] as $match)
+            {
+                $match = str_replace(['{', '}'], '', $match);
+                $match_data[$match] = null;
+            }
+            //check if the preg matches the uri
+            if(preg_match($uri2, Request::uri(), $matches))
+            {
+                //check if controller exist 
+                if(class_exists($controlargs[0]))
+                {
+                    //check if method exist
+                    if(method_exists($controlargs[0], $match))
+                    {
+                        //remove first match
+                        array_shift($matches);
+                        //loop through matches
+                        foreach($matches as $key => $match)
+                        {
+                            //add to array
+                            $matches_data[$key] = $match;
+                        }
+                        //call controller 
+                        call_user_func_array($controlargs, $matches_data);
+                        return true;
+                    }
+                    else
+                    {
+                        self::methodNotfound($controlargs[1]);
+                        return false;
+                    }
+                }
+                else
+                {
+                    self::classNotFound($controlargs[0]);
+                    return false;
+                }
+            }
+            else
+            {
+             return false;
+            }
+        }
+        else
+        {
+           return false;
+
+        }
+    }
+
+
+
+
     //get route
-    public static function get($uri, $controlargs,)
+    public static function get($uri, $controlargs)
     {
         self::routeHandler($uri, $controlargs, "GET");
     }
@@ -85,54 +156,83 @@ class Route
         echo "$class not Found";
     }
 
+    public static function methodNotFound($method)
+    {
+        echo "$method not Found";
+    }
+
     //run
     public static function run()
     {
-        //check if route is not empty
-        if(empty(self::$routes))
+        //check if routes is empty
+       if(empty(self::$routes))
+       {
+         self::notFound();
+         return;
+       }
+       //get currrent route 
+       $method = Request::method();
+       $uri = Request::uri();
+
+    //    echo $uri;
+
+       //page not found 
+       $pageNotFound = [];
+
+       foreach(self::$routes as $route)
+       {
+        if($route["matches"] !== false)
         {
-            self::notFound();
-            return;
+           //check if preg matches route
+           if(preg_match( $route["preg"], $uri, $matches))
+           {
+              if($route['method'] == $method || $route['method'] == "ANY")
+              {
+                 //no validation
+                 $validation = self::validateURL($route['uri'], $route['controlargs']);
+                echo "<pre>";
+                var_dump($validation);
+                echo '</pre>';
+
+              }
+              else{
+                self::notFoundHeader();
+              }
+              //check page found
+                $pageNotFound[] = false;
+           }
+           else
+           {
+                $pageNotFound[] = true;
+                continue;
+           }
         }
-        //get current route methods 
-        $method = Request::method();
-        $uri = Request::uri();  
-
-        //page not found array
-        $pageNotFound = [];
-
-        //loop through routes 
-        foreach(self::$routes as $route)
+        else
         {
-            //check if route not found
-            if($route['matches'] !== false)
+            //check current uri
+            if($route['uri'] == $uri)
             {
-                //check is the uri matches the preg
-                if(preg_match($route['preg'], $uri, $match))
-                {
-                    if($route['method'] == $method || $route['method'] === 'ANY' )
-                    {
-                         //No validation
-                    }
-                    else
-                    {
-                        self::notFoundHeader();
-                    }
-                    //page found
-                    $pageNotFound[] = false;
-                }
-                else
-                {
-                    $pageNotFound[] = true;
-                    //continue the loop
-                    continue;
-                }
-                
+               if($route['method'] == $method || $route['method'] == "ANY")
+               {
+                  //validation
+                  echo "<pre>";
+                  var_dump($uri);
+                  echo '</pre>';
+ 
+               }
+               else{
+                 self::notFoundHeader();
+               }
+               //check page found
+                 $pageNotFound[] = false;
             }
             else
             {
-                
+                 $pageNotFound[] = true;
+                 continue;
             }
         }
+
+       }
     }
 }

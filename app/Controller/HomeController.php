@@ -3,15 +3,17 @@
 namespace App\Controller;
 
 use App\Core\Request;
+use App\Core\View;
 
 class HomeController
 {
 
     //index method
     public static function index(Request $request)
-
     {
-        echo "<h1>Home Page</h1>";
+        $name = 'john Doe';
+        $age = 30;
+        return View::render("home/index",compact("name","age"));
     }
 
     //contact method

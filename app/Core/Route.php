@@ -63,33 +63,49 @@ class Route
             //check if the preg matches the uri
             if(preg_match($uri2, Request::uri(), $matches))
             {
-                //check is $controlargs is callable
-                //check if controller exist 
-                if(class_exists($controlargs[0]))
+                //check if $controlargs is callable
+                if(is_callable($controlargs))
                 {
-                    //check if method exist
-                    if(method_exists($controlargs[0], $controlargs[1]))
-                    { 
-                        //remove first match
-                        array_shift($matches);
-                       $matches = array_combine(array_keys($matches_data), $matches);
-
-                       //call method 
-                       $controller = new $controlargs[0];
-                       $controller->{$controlargs[1]}( new Request, $matches);
-                       return true;
-                    }
-                    else
-                    {
-                        self::methodNotfound($controlargs[1]);
-                        return false;
-                    }
+                    //remove the frist match 
+                    array_shift($matches);
+                    $matches = array_combine(array_keys($matches_data),$matches);
+                    //call method 
+                    $controlargs(
+                        new Request,
+                        $matches
+                    );
+                    return true;
                 }
                 else
                 {
-                    self::classNotFound($controlargs[0]);
-                    return false;
-                }
+                
+                    //check if controller exist 
+                    if(class_exists($controlargs[0]))
+                    {
+                        //check if method exist
+                        if(method_exists($controlargs[0], $controlargs[1]))
+                        { 
+                            //remove first match
+                            array_shift($matches);
+                        $matches = array_combine(array_keys($matches_data), $matches);
+
+                        //call method 
+                        $controller = new $controlargs[0];
+                        $controller->{$controlargs[1]}( new Request, $matches);
+                        return true;
+                        }
+                        else
+                        {
+                            self::methodNotfound($controlargs[1]);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        self::classNotFound($controlargs[0]);
+                        return false;
+                    }  
+                 }
             }
             else
             {
@@ -100,29 +116,45 @@ class Route
         {
              //check if the preg matches the uri
              if($uri == Request::uri())
+             {  
+                //check if $controlargs is callable
+                if(is_callable($controlargs))
+                {
+                    //call method 
+                    $controlargs(
+                        new Request,
+                    );
+                    return true;
+                }
+                else
+                {
+                    //check if controller exist 
+                    if(class_exists($controlargs[0]))
+                    {
+                        //check if method exist
+                        if(method_exists($controlargs[0], $controlargs[1]))
+                        { 
+                            //call method 
+                            $controller = new $controlargs[0];
+                            $controller->{$controlargs[1]}( new Request);
+                            return true;
+                        }
+                        else
+                        {
+                            self::methodNotfound($controlargs[1]);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        self::classNotFound($controlargs[0]);
+                        return false;
+                    }
+                }
+             }
+             else
              {
-                 //check if controller exist 
-                 if(class_exists($controlargs[0]))
-                 {
-                     //check if method exist
-                     if(method_exists($controlargs[0], $controlargs[1]))
-                     { 
-                        //call method 
-                        $controller = new $controlargs[0];
-                        $controller->{$controlargs[1]}( new Request);
-                        return true;
-                     }
-                     else
-                     {
-                         self::methodNotfound($controlargs[1]);
-                         return false;
-                     }
-                 }
-                 else
-                 {
-                     self::classNotFound($controlargs[0]);
-                     return false;
-                 }
+                return false;
              }
 
         }
@@ -164,6 +196,7 @@ class Route
     public static function notFound()
     {
         echo "404";
+        exit;
     }
 
     //404 header 
@@ -212,7 +245,7 @@ class Route
                 if($route['method'] == $method || $route['method'] == "ANY")
                 {
                     //Uri with a preg validation
-                    $validation = self::validateURL($route['uri'], $route['controlargs']);
+                    self::validateURL($route['uri'], $route['controlargs']);
                 }
                 else{
                     self::notFoundHeader();
@@ -231,16 +264,16 @@ class Route
                 //check current uri
                 if($route['uri'] == $uri)
                 {
-                if($route['method'] == $method || $route['method'] == "ANY")
-                {
-                    //Uri without preg validation
-                    $validation = self::validateURL($route['uri'], $route['controlargs']);
-    
-                }
-                else{
-                    self::notFoundHeader();
-                }
-                //check page found
+                    if($route['method'] == $method || $route['method'] == "ANY")
+                    {
+                        //Uri without preg validation
+                        self::validateURL($route['uri'], $route['controlargs']);
+        
+                    }
+                    else{
+                        self::notFoundHeader();
+                    }
+                    //check page found
                     $pageNotFound[] = false;
                 }
                 else
@@ -250,14 +283,14 @@ class Route
                 }
             }
        }
-       //check if page is not found
-       if(in_array(false, $pageNotFound))
-       {
-        return;
-       }
-       else
-       {
-         self::notFound();
-       }
+            //check if page is not found
+            if(in_array(false, $pageNotFound))
+            {
+                return;
+            }
+            else
+            {
+                self::notFound();
+            }    
     }
 }

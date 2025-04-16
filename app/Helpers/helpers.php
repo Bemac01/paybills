@@ -16,7 +16,7 @@ if(!function_exists("view"))
     }
 }
 
-//check id function exists
+//check is function exists
 if(!function_exists("chi_include"))
 {
     /**
@@ -30,5 +30,46 @@ if(!function_exists("chi_include"))
     {
         echo \App\Core\View::include($view, $args);
     }
+
+    //extend
+    function extend($view, $section = null, $args = [])
+    {
+        echo \App\Core\View::extend($view,$section, $args);
+    }
+
     
+}
+
+//section
+//check if function exists
+if(!function_exists('section'))
+{
+    /**
+     * @param string  $view
+     * @param array $args
+     * @return
+     * 
+     */
+    //view
+    function section($section)
+    {
+        echo \App\Core\View::section($section);
+    }
+}
+
+//endsection
+//check if function exists
+if(!function_exists('endsection'))
+{
+    /**
+     * @param string  $view
+     * @param array $args
+     * @return
+     * 
+     */
+    //view
+    function endsection()
+    {
+        echo \App\Core\View::endsection();
+    }
 }

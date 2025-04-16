@@ -70,6 +70,59 @@ if(!function_exists('endsection'))
     //view
     function endsection()
     {
-        echo \App\Core\View::endsection();
+        return \App\Core\View::endsection();
     }
 }
+
+//chi_yield
+//check if function exists
+if(!function_exists('chi_yield'))
+{
+    /**
+     * @param string  $view
+     * @param array $args
+     * @return
+     * 
+     */
+    //view
+    function chi_yield($section)
+    {
+        echo App\Core\View::yield($section);
+    }
+    
+}
+
+//pushScript
+//check if function exists
+if(!function_exists('pushScript'))
+{
+    /**
+     * @param string  $view
+     * @param array $args
+     * @return
+     * 
+     */
+    //view
+    function pushScript($section)
+    {
+        echo \App\Core\View::pushScript($section);
+    }
+}
+
+//endPushScript
+//check if function exists
+if(!function_exists('endPushScript'))
+{
+    /**
+     * @param string  $view
+     * @param array $args
+     * @return
+     * 
+     */
+    //view
+    function endPushScript()
+    {
+        return \App\Core\View::endPushScript();
+    }
+}
+

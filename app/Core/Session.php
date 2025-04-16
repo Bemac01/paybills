@@ -40,4 +40,16 @@ class Session
      {
         session_destroy();
      }
+
+     //has
+     public function has($key)
+     {
+        return isset($_SESSION[$key]);
+     }
+
+    //unset
+    public function unset($key)
+    {
+        unset($_SESSION[$key]);
+    }
 }

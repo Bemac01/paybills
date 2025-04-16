@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Core;
+use App\Core\Session;
 
 class View
 {
@@ -99,6 +100,46 @@ class View
 
             //return view
             return $view;
+        }
+    }
+
+    //pushScript
+    public static function pushScript($section)
+    {
+        //save bufffer
+        $GLOBALS['scriptName'] = $section;
+        
+        //start buffer
+        ob_start();
+    }
+
+    //endPushScript
+    public static function endPushScript()
+    {
+        //get bufffer content
+        $content = ob_get_clean();
+        
+        //save session
+        $session = new Session();
+        $session->set($GLOBALS['scriptName'], $content);
+        //unset scriptname
+        unset($GLOBALS['scriptName']);
+    }
+
+    //yield
+    public static function yield($section)
+    {
+        //get session
+        $session = new Session();
+        //check if session has 
+        if($session->has($section))
+        {
+            //get session
+            $content = $session->get($section);
+            //unset session
+            $session->unset($section);
+            //return content 
+            return $content; 
         }
     }
 }

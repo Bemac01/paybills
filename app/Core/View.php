@@ -47,4 +47,10 @@ class View
         http_response_code(404);
         return self::returnRender('error/404', ['fileError' => $fileError]); 
     }
+
+    //include
+    public static function include($view, $args = [])
+    {
+        return self::returnRender($view, $args); 
+    }
 }

@@ -10,14 +10,8 @@ class HomeController
     //index method
     public static function index(Request $request)
     {   
-        $name = "John Doe";
-        $age = 30;
-        $arrays = [
-            'Nwankwo Chidubem',
-            'London Chinonso',
-            'Babe More',
-        ];
-        return view("home/index", compact("name","age","arrays"));
+        
+        return view("home/home");
     }
 
     //contact method

@@ -13,6 +13,12 @@ $route::get("/register", [HomeController::class,"register"]);
 //login route
 $route::get("/signin", [HomeController::class,"sign"]);
 
+//Middleware route
+$route->middleware('user', function ($middleware) use ($route) {
+    //user route
+    $route::get("/user", [HomeController::class,"user"]);
+});
+
 $route::get("/blog/{id}/{title}", [HomeController::class,"blog"]);
 $route::get("/blog/{id}/{title}/{slug}/{amount}", [HomeController::class,"blog"]);
 

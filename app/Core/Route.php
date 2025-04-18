@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Core; 
+use App\Core\MiddleWare;
 
-class Route
+
+class Route extends MiddleWare
 {
     public static $routes =  [];
 
@@ -158,6 +160,13 @@ class Route
              }
 
         }
+    }
+
+    //middleware method 
+    public function middleware($middleware, $function)
+    {
+        //process middleware 
+        $function($middleware);
     }
 
     //get route

@@ -10,6 +10,9 @@ $route::get("/", [HomeController::class,"index"]);
 //register route
 $route::get("/register", [HomeController::class,"register"]);
 
+//login route
+$route::get("/signin", [HomeController::class,"sign"]);
+
 $route::get("/blog/{id}/{title}", [HomeController::class,"blog"]);
 $route::get("/blog/{id}/{title}/{slug}/{amount}", [HomeController::class,"blog"]);
 

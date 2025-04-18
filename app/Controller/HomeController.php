@@ -21,6 +21,12 @@ class HomeController
         return view("auth/register");
     }
 
+    //login method
+    public static function sign(Request $request)
+    {
+        return view("auth/signin");
+    }
+
     //contact method
     public static function contact(Request $request)
     {

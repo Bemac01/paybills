@@ -53,7 +53,7 @@
               <div class="card-footer text-center pt-0 px-lg-2 px-1">
                 <p class="mb-4 text-sm mx-auto">
                   I have an account?
-                  <a href="javascript:;" class="text-success text-gradient font-weight-bold">Sign in</a>
+                  <a href="<?php echo esc_url('signin')?>" class="text-success text-gradient font-weight-bold">Sign in</a>
                 </p>
               </div>
             </div>

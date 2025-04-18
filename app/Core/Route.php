@@ -282,7 +282,7 @@ class Route
                     continue;
                 }
             }
-       }
+        }
             //check if page is not found
             if(in_array(false, $pageNotFound))
             {

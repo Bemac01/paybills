@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <!-- <link rel="icon" type="image/png" href="assets/img/favicon.png"> -->
   <title>
     Nice vest
   </title>
@@ -28,6 +28,7 @@
   <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent ">
     <div class="container">
       <a class="navbar-brand  text-white " href="#" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom">
+      <img type="image/png" href="assets/img/favicon.png">
         Nice Vest
       </a>
       <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
@@ -143,7 +144,7 @@
                     <a class="dropdown-item py-2 ps-3 border-radius-md" href="  ">
                       <div class="d-flex">
                         <div class="icon h-10 me-3 d-flex mt-1">
-                          <svg class="text-secondary" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                          <svg class="text-success" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>switches</title>
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                               <g transform="translate(-1870.000000, -440.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -340,7 +341,7 @@
   <!-- -------- START HEADER 7 w/ text and video ------- -->
   <header class="bg-gradient-dark">
     <div class="page-header min-vh-75" style="background-image: url('assets/img/office-dark.jpg');">
-      <span class="mask bg-gradient-info opacity-8"></span>
+      <span class="mask bg-gradient-success opacity-8"></span>
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8 text-center mx-auto my-auto">
@@ -384,7 +385,7 @@
             <div class="col-md-6">
               <div class="info">
                 <div class="icon icon-shape text-center">
-                  <svg class="text-info" width="25px" height="25px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <svg class="text-success" width="25px" height="25px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>spaceship</title>
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                       <g transform="translate(-1720.000000, -592.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -407,7 +408,7 @@
             <div class="col-md-6">
               <div class="info">
                 <div class="icon icon-shape text-center">
-                  <svg class="text-info" width="43px" height="20px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <svg class="text-success" width="43px" height="20px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>credit-card</title>
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                       <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -431,7 +432,7 @@
             <div class="col-md-6">
               <div class="info">
                 <div class="icon icon-shape text-center">
-                  <svg class="text-info" width="25px" height="25px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <svg class="text-success" width="25px" height="25px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>box-3d-50</title>
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                       <g transform="translate(-2319.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -453,7 +454,7 @@
             <div class="col-md-6">
               <div class="info">
                 <div class="icon icon-shape text-center">
-                  <svg class="text-info" width="25px" height="25px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <svg class="text-success" width="25px" height="25px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <title>customer-support</title>
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                       <g transform="translate(-1717.000000, -291.000000)" fill="#FFFFFF" fill-rule="nonzero">
@@ -499,7 +500,7 @@
   </section>
   <!-- END Section with four info areas left & one card right with image and waves -->
   <!-- -------- START Features w/ pattern background & stats & rocket -------- -->
-  <section class="pt-sm-8 pb-5 position-relative bg-gradient-dark">
+  <section class="pt-sm-8 pb-5 position-relative bg-gradient-success">
     <div class="position-absolute w-100 z-inde-1 top-0 mt-n3">
       <svg width="100%" viewBox="0 -2 1920 157" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>wave-down</title>
@@ -533,7 +534,7 @@
               <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
                 <div class="card-body">
                   <h5 class="mb-0">Emma Roberts</h5>
-                  <h6 class="text-info">UI Designer</h6>
+                  <h6 class="text-success">UI Designer</h6>
                   <p class="mb-0">Artist is a term applied to a person who engages in an activity deemed to be an art.</p>
                 </div>
               </div>
@@ -553,7 +554,7 @@
               <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
                 <div class="card-body">
                   <h5 class="mb-0">William Pearce</h5>
-                  <h6 class="text-info">Boss</h6>
+                  <h6 class="text-success">Boss</h6>
                   <p>Artist is a term applied to a person who engages in an activity deemed to be an art.</p>
                 </div>
               </div>
@@ -575,7 +576,7 @@
               <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
                 <div class="card-body">
                   <h5 class="mb-0">Ivana Flow</h5>
-                  <h6 class="text-info">Athlete</h6>
+                  <h6 class="text-success">Athlete</h6>
                   <p>Artist is a term applied to a person who engages in an activity deemed to be an art.</p>
                 </div>
               </div>
@@ -595,7 +596,7 @@
               <div class="col-lg-8 col-md-6 col-12 ps-lg-0 my-auto">
                 <div class="card-body">
                   <h5 class="mb-0">Sophia Garcia</h5>
-                  <h6 class="text-info">JS Developer</h6>
+                  <h6 class="text-success">JS Developer</h6>
                   <p>Artist is a term applied to a person who engages in an activity deemed to be an art.</p>
                 </div>
               </div>
@@ -642,17 +643,17 @@
       </div>
       <div class="row justify-content-center text-center">
         <div class="col-md-3">
-          <h1 class="text-gradient text-info" id="state1" countTo="5234">0</h1>
+          <h1 class="text-gradient text-success" id="state1" countTo="5234">0</h1>
           <h5>Projects</h5>
           <p>Of “high-performing” level are led by a certified project manager</p>
         </div>
         <div class="col-md-3">
-          <h1 class="text-gradient text-info"><span id="state2" countTo="3400">0</span>+</h1>
+          <h1 class="text-gradient text-success"><span id="state2" countTo="3400">0</span>+</h1>
           <h5>Hours</h5>
           <p>That meets quality standards required by our users</p>
         </div>
         <div class="col-md-3">
-          <h1 class="text-gradient text-info"><span id="state3" countTo="24">0</span>/7</h1>
+          <h1 class="text-gradient text-success"><span id="state3" countTo="24">0</span>/7</h1>
           <h5>Support</h5>
           <p>Actively engage team members that finishes on time</p>
         </div>
@@ -676,7 +677,7 @@
               </div>
             </div>
             <div class="col-4 ps-0">
-              <button type="button" class="btn bg-gradient-info mb-0 h-100 position-relative z-index-2">Subscribe</button>
+              <button type="button" class="btn bg-gradient-success mb-0 h-100 position-relative z-index-2">Subscribe</button>
             </div>
           </div>
         </div>
@@ -695,7 +696,7 @@
       <div class=" row">
         <div class="col-md-3 mb-4 ms-auto">
           <div>
-            <h6 class="text-gradient text-primary font-weight-bolder">Soft UI Design 3 System</h6>
+            <h6 class="text-gradient text-success font-weight-bolder">Soft UI Design 3 System</h6>
           </div>
           <div>
             <h6 class="mt-3 mb-2 opacity-8">Social</h6>
@@ -730,7 +731,7 @@
         </div>
         <div class="col-md-2 col-sm-6 col-6 mb-4">
           <div>
-            <h6 class="text-gradient text-primary text-sm">Company</h6>
+            <h6 class="text-gradient text-success text-sm">Company</h6>
             <ul class="flex-column ms-n3 nav">
               <li class="nav-item">
                 <a class="nav-link" href="https://www.creative-tim.com/presentation" target="_blank">
@@ -757,7 +758,7 @@
         </div>
         <div class="col-md-2 col-sm-6 col-6 mb-4">
           <div>
-            <h6 class="text-gradient text-primary text-sm">Resources</h6>
+            <h6 class="text-gradient text-success text-sm">Resources</h6>
             <ul class="flex-column ms-n3 nav">
               <li class="nav-item">
                 <a class="nav-link" href="https://iradesign.io/" target="_blank">
@@ -779,7 +780,7 @@
         </div>
         <div class="col-md-2 col-sm-6 col-6 mb-4">
           <div>
-            <h6 class="text-gradient text-primary text-sm">Help & Support</h6>
+            <h6 class="text-gradient text-success text-sm">Help & Support</h6>
             <ul class="flex-column ms-n3 nav">
               <li class="nav-item">
                 <a class="nav-link" href="https://www.creative-tim.com/contact-us" target="_blank">
@@ -806,7 +807,7 @@
         </div>
         <div class="col-md-2 col-sm-6 col-6 mb-4 me-auto">
           <div>
-            <h6 class="text-gradient text-primary text-sm">Legal</h6>
+            <h6 class="text-gradient text-success text-sm">Legal</h6>
             <ul class="flex-column ms-n3 nav">
               <li class="nav-item">
                 <a class="nav-link" href="https://www.creative-tim.com/terms" target="_blank">

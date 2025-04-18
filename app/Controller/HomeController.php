@@ -15,6 +15,12 @@ class HomeController
         return view("home/home", compact('name','age'));
     }
 
+    //register method
+    public static function register(Request $request)
+    {
+        return view("auth/register");
+    }
+
     //contact method
     public static function contact(Request $request)
     {

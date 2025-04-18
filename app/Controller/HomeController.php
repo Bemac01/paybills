@@ -10,8 +10,9 @@ class HomeController
     //index method
     public static function index(Request $request)
     {   
-        
-        return view("home/home");
+        $name = "John Doe";
+        $age = 29;
+        return view("home/home", compact('name','age'));
     }
 
     //contact method

@@ -6,8 +6,7 @@ if(!function_exists("view"))
     /**
      * @param string  $view
      * @param array $args
-     * @return
-     * 
+     * @return  
      */
     //view
     function view($view, $args = [])
@@ -22,7 +21,7 @@ if(!function_exists("chi_include"))
     /**
      * @param string $view
      * @param array $args
-     * @return
+     * @return 
      * 
      */
     //chi_include 
@@ -47,7 +46,7 @@ if(!function_exists('section'))
     /**
      * @param string  $view
      * @param array $args
-     * @return
+     * @return 
      * 
      */
     //view
@@ -64,7 +63,7 @@ if(!function_exists('endsection'))
     /**
      * @param string  $view
      * @param array $args
-     * @return
+     * @return 
      * 
      */
     //view
@@ -81,7 +80,7 @@ if(!function_exists('chi_yield'))
     /**
      * @param string  $view
      * @param array $args
-     * @return
+     * @return 
      * 
      */
     //view
@@ -99,7 +98,7 @@ if(!function_exists('pushScript'))
     /**
      * @param string  $view
      * @param array $args
-     * @return
+     * @return 
      * 
      */
     //view
@@ -116,7 +115,7 @@ if(!function_exists('endPushScript'))
     /**
      * @param string  $view
      * @param array $args
-     * @return
+     * @return 
      * 
      */
     //view

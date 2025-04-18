@@ -125,3 +125,18 @@ if(!function_exists('endPushScript'))
     }
 }
 
+//esc_url
+//check if function exists
+if(!function_exists('esc_url'))
+{
+    /**
+     * @param string  $url
+     * @return 
+     * 
+     */
+    //esc_url
+    function esc_url($url)
+    {
+        return \App\Core\Component::esc_url($url);
+    }
+}

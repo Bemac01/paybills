@@ -160,9 +160,6 @@ class Route
         }
     }
 
-
-
-
     //get route
     public static function get($uri, $controlargs)
     {

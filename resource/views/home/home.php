@@ -328,10 +328,10 @@
             </ul>
           </li>
           <li class="nav-item ms-lg-auto">
-            <a href="#" class="btn btn-sm btn-outline-white btn-round mb-0 me-1 mt-2 mt-md-0">My Account</a>
+            <a href="<?php echo esc_url('signin'); ?>" class="btn btn-sm btn-outline-white btn-round mb-0 me-1 mt-2 mt-md-0">My Account</a>
           </li>
           <li class="nav-item my-auto ms-3 ms-lg-0">
-            <a href="#" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Get started</a>
+            <a href="<?php echo esc_url('register'); ?>" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Get started</a>
           </li>
         </ul>
       </div>
@@ -347,10 +347,12 @@
           <div class="col-lg-8 text-center mx-auto my-auto">
             <h1 class="text-white">Work with an amazing design</h1>
             <p class="lead mb-4 text-white opacity-8">We’re constantly trying to express ourselves and actualize our dreams. If you have the opportunity to play this game</p>
-            <button type="submit" class="btn bg-white text-dark">Create Account</button>
+            <a href="<?php echo esc_url('register'); ?>">
+              <button type="submit" class="btn bg-white text-dark">Create Account</button>
+            </a>
             <h6 class="text-white mb-2 mt-5">Find us on</h6>
             <div class="d-flex justify-content-center">
-              <a href="javascript:;"><i class="fab fa-facebook text-lg text-white me-4"></i></a>
+              <a href="javascript:;"><i class="fab fa-facebook text-lg text-info me-4"></i></a>
               <a href="javascript:;"><i class="fab fa-instagram text-lg text-white me-4"></i></a>
               <a href="javascript:;"><i class="fab fa-twitter text-lg text-white me-4"></i></a>
               <a href="javascript:;"><i class="fab fa-google-plus text-lg text-white"></i></a>

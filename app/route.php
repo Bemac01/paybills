@@ -7,6 +7,9 @@ use App\Core\Route;
 $route = new Route();
 $route::get("/", [HomeController::class,"index"]);
 
+//register route
+$route::get("/register", [HomeController::class,"register"]);
+
 $route::get("/blog/{id}/{title}", [HomeController::class,"blog"]);
 $route::get("/blog/{id}/{title}/{slug}/{amount}", [HomeController::class,"blog"]);
 

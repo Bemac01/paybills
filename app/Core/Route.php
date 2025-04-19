@@ -184,7 +184,7 @@ class Route extends MiddleWare
         //final URL
         $url = $baseUrl . $sampleurl;
         //redirect to the final URL
-        header("Location: " . $url);
+        header("Location: $url");
         exit;
     }
 
@@ -206,7 +206,7 @@ class Route extends MiddleWare
                 }
                 else
                 {
-                    //show error message'
+                    //show error
                     throw new \Exception($response['error'], $response['code']);
                     exit;
                 } 

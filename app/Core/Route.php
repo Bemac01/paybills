@@ -67,6 +67,8 @@ class Route extends MiddleWare
             //check if the preg matches the uri
             if(preg_match($uri2, Request::uri(), $matches))
             {
+                //process middleware
+                self::processMiddleware($middleware);
                 //check if $controlargs is callable
                 if(is_callable($controlargs))
                 {
@@ -121,6 +123,9 @@ class Route extends MiddleWare
              //check if the preg matches the uri
              if($uri == Request::uri())
              {  
+
+                //process middleware
+                self::processMiddleware($middleware);
                 //check if $controlargs is callable
                 if(is_callable($controlargs))
                 {
@@ -172,14 +177,14 @@ class Route extends MiddleWare
     }
 
     //redirect method
-    public static function redirect($justUrl)
+    public static function redirect($sampleurl)
     {
         //process the base URL
         $baseUrl = Request::baseUrl();
         //final URL
-        $finalUrl = $baseUrl . $justUrl;
+        $url = $baseUrl . $sampleurl;
         //redirect to the final URL
-        header("Location: " . $finalUrl);
+        header("Location: " . $url);
         exit;
     }
 
@@ -196,19 +201,16 @@ class Route extends MiddleWare
                 //check if redirect is set
                 if(isset($response['redirect']))
                 {
-                    header("Location: " . $response['redirect']);
-                    exit;
+                //redirect
+                   redirect($response['redirect']);
                 }
                 else
                 {
-                    echo $response['error'];
+                    //show error message'
+                    throw new \Exception($response['error'], $response['code']);
                     exit;
-                }
-            }
-            else
-            {
-                return true;
-            }
+                } 
+            }    
         }
     }
 

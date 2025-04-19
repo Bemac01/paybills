@@ -140,3 +140,19 @@ if(!function_exists('esc_url'))
         return \App\Core\Component::esc_url($url);
     }
 }
+
+//App\Core\directs
+//check if the function exists
+if(!function_exists('redirect'))
+{
+    /**
+     * @param string  $url
+     * @return  
+     * 
+     */
+    //redirect
+    function redirect($url)
+    {
+        return \App\Core\Route::redirect($url);
+    }
+}

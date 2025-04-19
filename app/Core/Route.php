@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Core; 
+
 use App\Core\MiddleWare;
 
 
@@ -9,7 +10,7 @@ class Route extends MiddleWare
     public static $routes =  [];
 
     //Handlers method
-    public static function routeHandler($uri, $controlargs, $method)
+    public static function routeHandler($uri, $controlargs, $method, $middleware = null)
     {
         //convert Uri to preg
         if(preg_match_all('/\{[a-zA-Z0-9-_]+\}/', $uri, $matches))
@@ -35,12 +36,13 @@ class Route extends MiddleWare
             "preg" => $uri2,
             "matches" => $matches,
             "controlargs" => $controlargs,
-            "method" => $method
+            "method" => $method,
+            "middleware" => $middleware
         ];
     }
 
     //validate URL
-    public static function validateURL($uri, $controlargs)
+    public static function validateURL($uri, $controlargs, $middleware)
     {
         //check preg pass
         if(preg_match_all('/\{[a-zA-Z0-9-_]+\}/', $uri, $matches))
@@ -169,10 +171,51 @@ class Route extends MiddleWare
         $function($middleware);
     }
 
-    //get route
-    public static function get($uri, $controlargs)
+    //redirect method
+    public static function redirect($justUrl)
     {
-        self::routeHandler($uri, $controlargs, "GET");
+        //process the base URL
+        $baseUrl = Request::baseUrl();
+        //final URL
+        $finalUrl = $baseUrl . $justUrl;
+        //redirect to the final URL
+        header("Location: " . $finalUrl);
+        exit;
+    }
+
+    //process middleware
+    public static function processMiddleware($middleware)
+    {
+        //check if middleware is not null
+        if(is_null($middleware))
+        {
+            $response = self::action($middleware);
+            //check if response is not 200
+            if($response['code'] != 200)
+            {
+                //check if redirect is set
+                if(isset($response['redirect']))
+                {
+                    header("Location: " . $response['redirect']);
+                    exit;
+                }
+                else
+                {
+                    echo $response['error'];
+                    exit;
+                }
+            }
+            else
+            {
+                return true;
+            }
+        }
+    }
+
+    //get route
+    public static function get($uri, $controlargs, $middleware = null)
+    {
+        self::routeHandler($uri, $controlargs, "GET", $middleware);
     }
 
     //post route
@@ -251,7 +294,7 @@ class Route extends MiddleWare
                 if($route['method'] == $method || $route['method'] == "ANY")
                 {
                     //Uri with a preg validation
-                    self::validateURL($route['uri'], $route['controlargs']);
+                    self::validateURL($route['uri'], $route['controlargs'], $route['middleware']);
                 }
                 else{
                     self::notFoundHeader();
@@ -273,7 +316,7 @@ class Route extends MiddleWare
                     if($route['method'] == $method || $route['method'] == "ANY")
                     {
                         //Uri without preg validation
-                        self::validateURL($route['uri'], $route['controlargs']);
+                        self::validateURL($route['uri'], $route['controlargs'], $route['middleware']);
         
                     }
                     else{

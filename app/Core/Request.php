@@ -8,6 +8,21 @@ class Request
         return trim(dirname($_SERVER['SCRIPT_NAME']), '/');
     }
 
+    //base url 
+    public static function baseUrl()
+    {
+        //check if ssl
+        if(!self::secure())
+        {
+            return "http://". $_SERVER['HTTP_HOST']. self::base();
+        }
+        else
+        {
+            return "https://". $_SERVER['HTTP_HOST']. self::base();
+
+        }
+    }
+
     //Uri method and check if ssl is present
     public static function uri()
     {

@@ -29,6 +29,6 @@ class MiddleWare
             return ['error'=> 'You are already logged in','code'=> 401, 'redirect' => '/login'];
         }
         //return true 
-        return true;
+        return ['code' => 200];
     }
 }

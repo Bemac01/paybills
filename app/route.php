@@ -16,7 +16,7 @@ $route::get("/login", [HomeController::class,"login"]);
 //Middleware route
 $route->middleware('user', function ($middleware) use ($route) {
     //user route
-    $route::get("/user", [HomeController::class,"user"]);
+    $route::get("/user", [HomeController::class,"user"], $middleware);
 });
 
 $route::get("/blog/{id}/{title}", [HomeController::class,"blog"]);

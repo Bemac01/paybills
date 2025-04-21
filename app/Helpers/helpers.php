@@ -3,10 +3,10 @@
 //check if function exists
 if(!function_exists("view"))
 {
-    /**
+    /*
      * @param string  $view
      * @param array $args
-     * @return  
+     * @return  html
      */
     //view
     function view($view, $args = [])
@@ -18,10 +18,10 @@ if(!function_exists("view"))
 //check is function exists
 if(!function_exists("chi_include"))
 {
-    /**
+    /*
      * @param string $view
      * @param array $args
-     * @return 
+     * @return html
      * 
      */
     //chi_include 
@@ -43,10 +43,10 @@ if(!function_exists("chi_include"))
 //check if function exists
 if(!function_exists('section'))
 {
-    /**
+    /*
      * @param string  $view
      * @param array $args
-     * @return 
+     * @return html
      * 
      */
     //view
@@ -60,10 +60,10 @@ if(!function_exists('section'))
 //check if function exists
 if(!function_exists('endsection'))
 {
-    /**
+    /*
      * @param string  $view
      * @param array $args
-     * @return 
+     * @return html
      * 
      */
     //view
@@ -77,10 +77,10 @@ if(!function_exists('endsection'))
 //check if function exists
 if(!function_exists('chi_yield'))
 {
-    /**
+    /*
      * @param string  $view
      * @param array $args
-     * @return 
+     * @return html
      * 
      */
     //view
@@ -95,10 +95,10 @@ if(!function_exists('chi_yield'))
 //check if function exists
 if(!function_exists('pushScript'))
 {
-    /**
+    /*
      * @param string  $view
      * @param array $args
-     * @return 
+     * @return html
      * 
      */
     //view
@@ -112,10 +112,10 @@ if(!function_exists('pushScript'))
 //check if function exists
 if(!function_exists('endPushScript'))
 {
-    /**
+    /*
      * @param string  $view
      * @param array $args
-     * @return 
+     * @return html
      * 
      */
     //view
@@ -129,9 +129,9 @@ if(!function_exists('endPushScript'))
 //check if function exists
 if(!function_exists('esc_url'))
 {
-    /**
+    /*
      * @param string  $url
-     * @return 
+     * @return html
      * 
      */
     //esc_url
@@ -145,14 +145,27 @@ if(!function_exists('esc_url'))
 //check if the function exists
 if(!function_exists('redirect'))
 {
-    /**
+    /*
      * @param string  $url
-     * @return  
+     * @return  string
      * 
      */
     //redirect
     function redirect($url)
     {
         return \App\Core\Route::redirect($url);
+    }
+}
+
+//baseurl
+//check if function exists
+if (!function_exists('baseurl')) {
+    //baseurl
+    /*
+    * @return string
+    */
+    function baseurl()
+    {
+        return \App\Core\Request::baseurl();
     }
 }

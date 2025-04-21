@@ -3,7 +3,7 @@ namespace App\Core;
 
 use App\Core\Session;
 
-class Middleware
+class MiddleWare
 {
     //entry point
     public static function action($action = "")
@@ -26,7 +26,7 @@ class Middleware
         $session = new Session;
         if(!$session->has('user'))
         {
-            return ['error'=> 'You are already logged in','code'=> 401, 'redirect' => '/signin'];
+            return ['error'=> 'You are already logged in','code'=> 401, 'redirect' => '/login'];
         }
         //return true 
         return true;

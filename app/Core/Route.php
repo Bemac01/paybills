@@ -177,12 +177,12 @@ class Route extends MiddleWare
     }
 
     //redirect method
-    public static function redirect($sampleurl)
+    public static function redirect($justurl)
     {
         //process the base URL
         $baseUrl = Request::baseUrl();
         //final URL
-        $url = $baseUrl . $sampleurl;
+        $url = $baseUrl . $justurl;
         //redirect to the final URL
         header("Location: $url");
         exit;
@@ -192,7 +192,7 @@ class Route extends MiddleWare
     public static function processMiddleware($middleware)
     {
         //check if middleware is not null
-        if(is_null($middleware))
+        if(!is_null($middleware))
         {
             $response = self::action($middleware);
             //check if response is not 200
@@ -209,6 +209,7 @@ class Route extends MiddleWare
                     //show error
                     throw new \Exception($response['error'], $response['code']);
                     exit;
+                    
                 } 
             }    
         }

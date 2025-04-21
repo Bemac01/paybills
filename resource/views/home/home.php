@@ -328,7 +328,7 @@
             </ul>
           </li>
           <li class="nav-item ms-lg-auto">
-            <a href="<?php echo esc_url('signin'); ?>" class="btn btn-sm btn-outline-white btn-round mb-0 me-1 mt-2 mt-md-0">My Account</a>
+            <a href="<?php echo esc_url('login'); ?>" class="btn btn-sm btn-outline-white btn-round mb-0 me-1 mt-2 mt-md-0">My Account</a>
           </li>
           <li class="nav-item my-auto ms-3 ms-lg-0">
             <a href="<?php echo esc_url('register'); ?>" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Get started</a>

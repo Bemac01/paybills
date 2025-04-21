@@ -22,9 +22,9 @@ class HomeController
     }
 
     //login method
-    public static function sign(Request $request)
+    public static function login(Request $request)
     {
-        return view("auth/signin");
+        return view("auth/login");
     }
 
     //contact method

@@ -11,7 +11,7 @@ $route::get("/", [HomeController::class,"index"]);
 $route::get("/register", [HomeController::class,"register"]);
 
 //login route
-$route::get("/signin", [HomeController::class,"sign"]);
+$route::get("/login", [HomeController::class,"login"]);
 
 //Middleware route
 $route->middleware('user', function ($middleware) use ($route) {

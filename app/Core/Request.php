@@ -14,11 +14,11 @@ class Request
         //check if ssl
         if(!self::secure())
         {
-            return "http://". $_SERVER['HTTP_HOST']. self::base();
+            return "http://". $_SERVER['HTTP_HOST'].'/'. self::base();
         }
         else
         {
-            return "https://". $_SERVER['HTTP_HOST']. self::base();
+            return "https://". $_SERVER['HTTP_HOST'].'/'. self::base();
 
         }
     }

@@ -21,6 +21,13 @@ class Component
         return $url;
     }
 
+    //assets
+    public static function assets($path)
+    {
+        $baseurl = baseurl();
+        return $baseurl . DIRECTORY_SEPARATOR . $path;
+    }
+
     //esc_html
     public static function esc_html($html)
     {

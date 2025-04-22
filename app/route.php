@@ -4,6 +4,7 @@ use App\Controller\HomeController;
 use App\Core\Request;
 use App\Core\Route;
 
+
 $route = new Route();
 $route::get("/", [HomeController::class,"index"]);
 

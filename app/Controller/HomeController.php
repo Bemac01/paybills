@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Core\Database;
+use App\Core\Model;
 use App\Core\Request;
+
 
 class HomeController
 {
@@ -17,10 +20,20 @@ class HomeController
 
     //register method
     public static function register(Request $request)
-    {
+    {   
+        $data = Model::create("users", [
+            'name' => 'John Doe',
+            'email' => 'johndoe@gmail.com',
+            'password' => password_hash('password', PASSWORD_DEFAULT),
+            'image' => 'image.jpg',
+        ]);
+        $idea = Model::getTable("users");
+        echo "<pre>";   
+        var_dump($idea);
         return view("auth/register");
     }
 
+    
     //login method
     public static function login(Request $request)
     {

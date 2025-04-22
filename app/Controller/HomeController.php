@@ -21,15 +21,7 @@ class HomeController
     //register method
     public static function register(Request $request)
     {   
-        $data = Model::create("users", [
-            'name' => 'John Doe',
-            'email' => 'johndoe@gmail.com',
-            'password' => password_hash('password', PASSWORD_DEFAULT),
-            'image' => 'image.jpg',
-        ]);
-        $idea = Model::getTable("users");
-        echo "<pre>";   
-        var_dump($idea);
+    
         return view("auth/register");
     }
 

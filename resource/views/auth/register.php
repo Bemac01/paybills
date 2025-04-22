@@ -1,5 +1,5 @@
 <?php
-section("content");
+section("contentAuth");
 ?>
 <section>
     <div class="page-header min-vh-100">
@@ -12,19 +12,42 @@ section("content");
                 <p class="mb-0">Sign Up to get started</p>
               </div>
               <div class="card-body">
-                <form role="form">
-                  <div class="mb-3">
-                    <input type="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
-                  </div>
-                  <div class="mb-3">
-                    <input type="email" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
-                  </div>
-                  <div class="mb-3">
-                    <input type="email" class="form-control form-control-lg" placeholder="comfirm Password" aria-label="Password" aria-describedby="password-addon">
-                  </div>
-                  <div class="text-center">
-                    <button type="button" class="btn btn-lg bg-gradient-success btn-lg w-100 mt-4 mb-0">Sign up</button>
-                  </div>
+                 <form id="registerForm" role="form" action="" method="post">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="first_name">First Name</label>
+                                <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name" aria-label="First Name" aria-describedby="first_name-addon">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name" aria-label="Last Name" aria-describedby="last_name-addon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="from-group">
+                            <label for="phone">Phone</label>
+                            <input type="text" name="phone" id="phone" class="form-control" placeholder="Phone" aria-label="Phone" aria-describedby="phone-addon">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input name="email" id="email" type="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input name="password" id="password" type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-lg bg-gradient-success btn-lg w-100 mt-4 mb-0">Sign up</button>
+                    </div>
                 </form>
               </div>
               <div class="card-footer text-center pt-0 px-lg-2 px-1">
@@ -52,4 +75,4 @@ section("content");
   </section>
 <?php
 endsection();
-extend("auth/layout/app","content");
+extend("auth/layout/app","contentAuth");

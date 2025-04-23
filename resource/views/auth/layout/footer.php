@@ -6,7 +6,7 @@
   <!--  Plugin for Parallax, full documentation here: https://github.com/wagerfield/parallax  -->
   <script src="assets/js/plugins/parallax.min.js"></script>
   <script src="assets/js/soft-design-system.min.js?v=1.1.0" type="text/javascript"></script>
-  <script src="assets/js/core/core.js" type="text/javascript"></script>
+  <script src="assets/js/core/webScript.js?v=<?php echo time(); ?>" type="text/javascript"></script>
 </body>
 
 </html>

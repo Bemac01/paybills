@@ -21,7 +21,12 @@ class HomeController
     //register method
     public static function register(Request $request)
     {   
-    
+        $data = Model::create("users", [
+            "first_name" => "John",
+            "last_name" => "Doe",
+            "email" => ""]);
+        // echo "<pre>";
+        // print_r($data);
         return view("auth/register");
     }
 

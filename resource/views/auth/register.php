@@ -42,7 +42,8 @@ section("contentAuth");
                     <div class="mb-3">
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input name="password" id="password" type="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                            <input name="password" id="password" type="password" class="form-control form-control-lg" placeholder="Password"
+                            aria-label="Password" aria-describedby="password-addon">
                         </div>
                     </div>
                     <div class="text-center">

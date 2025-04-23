@@ -1,3 +1,6 @@
 $(document).ready(function () {
-    console.log("Core Jquery loaded");
+    $("#registerForm").submit(function (e) { 
+        e.preventDefault();
+        console.log("Form submitted!");
+    });
 });

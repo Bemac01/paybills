@@ -1,5 +1,6 @@
 <?php
 
+use App\Controller\AuthController;
 use App\Controller\HomeController;
 use App\Core\Request;
 use App\Core\Route;
@@ -10,6 +11,7 @@ $route::get("/", [HomeController::class,"index"]);
 
 //register route
 $route::get("/register", [HomeController::class,"register"]);
+$route::post("/register-user", [AuthController::class,"register"]);
 
 //login route
 $route::get("/login", [HomeController::class,"login"]);

@@ -13,9 +13,9 @@ class Route extends MiddleWare
     public static function routeHandler($uri, $controlargs, $method, $middleware = null)
     {
         //convert Uri to preg
-        if(preg_match_all('/\{[a-zA-Z0-9-_]+\}/', $uri, $matches))
+        if(preg_match_all('/\{[a-zA-Z0-9-_@]+\}/', $uri, $matches))
         {
-            $uri2 = preg_replace('/\{[a-zA-Z0-9-_]+\}/','([a-zA-Z0-9-_]+)', $uri);
+            $uri2 = preg_replace('/\{[a-zA-Z0-9-_@]+\}/','([a-zA-Z0-9-_@]+)', $uri);
 
             //escape
             $uri2 = str_replace('/','\/', $uri2);
@@ -176,18 +176,33 @@ class Route extends MiddleWare
         $function($middleware);
     }
 
-    //redirect method
-    public static function redirect($justurl)
-    {
-        //process the base URL
-        $baseUrl = Request::baseUrl();
-        //final URL
-        $url = $baseUrl . $justurl;
-        //redirect to the final URL
-        header("Location: $url");
-        exit;
-    }
-
+   //redirect
+   public static function redirect($simpleurl, $args = [])
+   {
+       //get base url
+       $baseurl = Request::baseurl();
+       //check if $simpleurl has /
+       if (!strpos($simpleurl, '/')) {
+           $simpleurl = '/' . $simpleurl;
+       }
+       //final url
+       $url = $baseurl . $simpleurl;
+       //check if args is not empty
+       if (!empty($args)) {
+           //add ? to url
+           $url .= '?';
+           //loop through args
+           foreach ($args as $key => $value) {
+               //add to url
+               $url .= $key . '=' . $value . '&';
+           }
+           //remove last &
+           $url = rtrim($url, '&');
+       }
+       //redirect
+       header("Location: $url");
+       exit;
+   }
     //process middleware
     public static function processMiddleware($middleware)
     {

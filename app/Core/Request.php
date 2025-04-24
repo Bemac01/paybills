@@ -50,6 +50,23 @@ class Request
         return isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "off";
     }
 
+      //input
+      public static function input($key = null)
+      {
+          //check if key exist is any of the request
+          if (isset($_REQUEST[$key])) {
+              return $_REQUEST[$key];
+          }
+          //return null
+          return null;
+      }
+  
+      //all
+      public static function all()
+      {
+          return $_REQUEST;
+      }
+
     //method
     public static function method()
     {

@@ -28,6 +28,13 @@ class Component
         return $baseurl . DIRECTORY_SEPARATOR . $path;
     }
 
+    //url
+    public static function url($path)
+    {
+        $baseurl = baseurl();
+        return $baseurl . DIRECTORY_SEPARATOR . $path;
+    }
+
     //esc_html
     public static function esc_html($html)
     {
@@ -95,5 +102,18 @@ class Component
            }
            //return url
            return $url;
+       }
+       
+       //response_json
+       public static function response_json($data = [])
+       {
+            header("content-type: application/json");
+            //check if data is an array
+            if(!is_array($data))
+            {
+                $data = array($data);
+            }
+            echo json_encode($data);
+            die;
        }
 }

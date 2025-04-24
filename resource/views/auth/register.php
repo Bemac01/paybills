@@ -76,4 +76,30 @@ section("contentAuth");
   </section>
 <?php
 endsection();
+pushScript("scripts");
+?>
+<script>
+    $(document).ready(function () {
+      $('#registerForm').submit(function (e) { 
+          e.preventDefault();
+          let formData = $(this);          
+          $.ajax({
+              type: "POST",
+              url: "<?php echo url('/register-user')?>",
+              data: formData.serialize(),
+              dataType: "json",
+              beforeSend: function () {
+                  // Show loading spinner or message
+                  
+              },
+              success: function (response) {
+                  //response if all works well
+                  console.log(response);
+              }
+          });
+      });
+  });   
+</script>
+<?php
+endPushScript();
 extend("auth/layout/app","contentAuth");

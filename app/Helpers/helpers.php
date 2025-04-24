@@ -169,3 +169,29 @@ if (!function_exists('baseurl')) {
         return \App\Core\Request::baseurl();
     }
 }
+
+//url
+//check if function exists
+if (!function_exists('url')) {
+    //url
+    /*
+    * @return string
+    */
+    function url($path)
+    {
+        return \App\Core\Component::url($path);
+    }
+}
+
+//response_json
+//check if function exists
+if (!function_exists('response_json')) {
+    //response_json
+    /*
+    * @return string
+    */
+    function response_json($data)
+    {
+        return \App\Core\Component::Response_json($data);
+    }
+}

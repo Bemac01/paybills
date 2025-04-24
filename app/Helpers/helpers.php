@@ -195,3 +195,16 @@ if (!function_exists('response_json')) {
         return \App\Core\Component::Response_json($data);
     }
 }
+
+//clenPhone
+//check if function exists
+if (!function_exists('cleanPhone')) {
+    //cleanPhone
+    /*
+    * @return string
+    */
+    function cleanPhone($phone)
+    {
+        return \App\Core\Component::cleanPhone($phone);
+    }
+}

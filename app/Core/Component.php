@@ -116,4 +116,20 @@ class Component
             echo json_encode($data);
             die;
        }
+
+       //clean phone
+        public static function cleanPhone($phone_number)
+        {
+            //check if phone number is empty
+            if (empty($phone_number)) {
+                return $phone_number;
+            }
+            //check if phone number is string
+            if (is_string($phone_number)) {
+                //return phone number
+                return preg_replace('/[^0-9]/', '', $phone_number);
+            }
+            //return phone number
+            return $phone_number;
+        }
 }

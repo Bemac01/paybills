@@ -80,9 +80,12 @@ pushScript("scripts");
 ?>
 <script>
     $(document).ready(function () {
+      
       $('#registerForm').submit(function (e) { 
           e.preventDefault();
-          let formData = $(this);          
+          let formData = $(this);  
+
+          //ajax call to register user
           $.ajax({
               type: "POST",
               url: "<?php echo url('/register-user')?>",
@@ -90,11 +93,63 @@ pushScript("scripts");
               dataType: "json",
               beforeSend: function () {
                   // Show loading spinner or message
-                  
+                    formData.block({
+                        message: '<div class="spinner-border text-success text-gradient" role="status"><span class="visually-hidden">Loading...</span></div>',
+                        overlayCSS: {
+                            background: '#fff',
+                            opacity: 0.8,
+                            cursor: 'wait'
+                        },
+                        css: {
+                            border: 0,
+                            padding: 0,
+                            backgroundColor: 'none'
+                        },
+                        // {
+                        //   fadeOut: 5000,
+                        // }
+                    });    
               },
               success: function (response) {
+                //unblock the form
+                  formData.unblock();
                   //response if all works well
-                  console.log(response);
+                  if(response.code == 200)
+                  {
+                    //clear the form
+                    formData.trigger("reset");
+                      //show success message
+                      Swal.fire({
+                          title: 'Success',
+                          text: response.message,
+                          icon: 'success',
+                          confirmButtonText: 'Login'
+                      }).then((result) => {
+                          if (result.isConfirmed) {
+                              window.location.href = "<?php echo url('/login')?>";
+                          }
+                      });
+                  }
+                  else if(response.code == 400)
+                  {
+                      //show error message
+                      Swal.fire({
+                          title: 'Error',
+                          text: response.message,
+                          icon: 'info',
+                          confirmButtonText: 'Try Again'
+                      });
+                  }
+                  else if(response.code == 500)
+                  {
+                      //show error message
+                      Swal.fire({
+                          title: 'Error',
+                          text: response.message,
+                          icon: 'error',
+                          confirmButtonText: 'OK'
+                      });
+                  }
               }
           });
       });

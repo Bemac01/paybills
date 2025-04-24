@@ -104,10 +104,7 @@ pushScript("scripts");
                             border: 0,
                             padding: 0,
                             backgroundColor: 'none'
-                        },
-                        // {
-                        //   fadeOut: 5000,
-                        // }
+                        }
                     });    
               },
               success: function (response) {

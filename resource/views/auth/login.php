@@ -62,12 +62,12 @@
         //ajax call to register user
         $.ajax({
               type: "POST",
-              url: "<?php echo url('/register-user')?>",
-              data: formData.serialize(),
+              url: "<?php echo url('/login-user')?>",
+              data: form.serialize(),
               dataType: "json",
               beforeSend: function () {
                   // Show loading spinner or message
-                    formData.block({
+                    form.block({
                         message: '<div class="spinner-border text-success text-gradient" role="status"><span class="visually-hidden">Loading...</span></div>',
                         overlayCSS: {
                             background: '#fff',
@@ -83,7 +83,7 @@
               },
               success: function (response) {
                 //unblock the form
-                  formData.unblock();
+                  form.unblock();
                   //response if all works well
                   if(response.code == 200)
                   {
@@ -93,11 +93,10 @@
                       Swal.fire({
                           title: 'Success',
                           text: response.message,
-                          icon: 'success',
-                          confirmButtonText: 'Login'
+                          icon: 'success'
                       }).then((result) => {
                           if (result.isConfirmed) {
-                              window.location.href = "<?php echo url('/')?>";
+                              window.location.href = response.redirect;
                           }
                       });
                   }
@@ -107,8 +106,8 @@
                       Swal.fire({
                           title: 'Error',
                           text: response.message,
-                          icon: 'info',
-                          confirmButtonText: 'Wrong email or password'
+                          icon: 'error',
+                          confirmButtonText: 'OK'
                       });
                   }
                   else if(response.code == 500)

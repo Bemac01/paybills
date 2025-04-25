@@ -53,7 +53,7 @@ class HomeController
     //dashboard method
     public static function dashboard(Request $request)
     {
-        echoS "dashboard";
+        echo "dashboard";
     }
 
 

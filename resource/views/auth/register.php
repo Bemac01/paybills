@@ -79,8 +79,7 @@ endsection();
 pushScript("scripts");
 ?>
 <script>
-    $(document).ready(function () {
-      
+    $(document).ready(function () {  
       $('#registerForm').submit(function (e) { 
           e.preventDefault();
           let formData = $(this);  

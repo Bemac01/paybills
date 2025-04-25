@@ -54,72 +54,105 @@
   endsection();
   pushScript('scripts');
   ?>
-  <script>
+ <script>
     $(document).ready(function() {
 
-          //login submit
-          $("#loginUser").submit(function(e) {
-              e.preventDefault();
-              let form = $(this);
-              //ajax
-              $.ajax({
-                  type: "POST",
-                  url: "<?php echo url('/login-user') ?>",
-                  data: form.serialize(),
-                  dataType: "json",
-                  beforeSend: () => {
-                      //show animation
-                      //block form
-                      form.block({
-                          message: '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>',
-                          overlayCSS: {
-                              backgroundColor: '#fff',
-                              opacity: 0.8,
-                              cursor: 'wait'
-                          },
-                          css: {
-                              border: 0,
-                              padding: 0,
-                              backgroundColor: 'none'
-                          }
-                      });
-                  },
-                  success: function(response) {
-                      //unblock form
-                      form.unblock();
-                      //check if response code is 200
-                      if (response.code == 200) {
-                          //Swal
-                          Swal.fire({
-                              icon: 'success',
-                              title: 'Success',
-                              text: response.message,
-                              showConfirmButton: true,
-                              //confirm button text
-                              confirmButtonText: 'Goto Dashboard',
-                          }).then((result) => {
-                              //check if result is true
-                              if (result.isConfirmed) {
-                                  //redirect to dashboard
-                                  window.location.href = response.redirect;
-                              } else {
-                                  //redirect to dashboard
-                                  window.location.href = "<?php echo url(''); ?>";
-                              }
-                          });
-                      } else {
-                          //show error
-                          Swal.fire({
-                              icon: 'error',
-                              title: 'Oops...',
-                              text: response.message,
-                          });
-                      }
-                  }
-              });
-          });
+        //login submit
+        $("#loginUser").submit(function(e) {
+            e.preventDefault();
+            let form = $(this);
+            //ajax
+            $.ajax({
+                type: "POST",
+                url: "<?php echo url('/login-user') ?>",
+                data: form.serialize(),
+                dataType: "json",
+                beforeSend: () => {
+                    //show animation
+                    //block form
+                    form.block({
+                        message: '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>',
+                        overlayCSS: {
+                            backgroundColor: '#fff',
+                            opacity: 0.8,
+                            cursor: 'wait'
+                        },
+                        css: {
+                            border: 0,
+                            padding: 0,
+                            backgroundColor: 'none'
+                        }
+                    });
+                },
+                success: function(response) {
+                    //unblock form
+                    form.unblock();
+                    //check if response code is 200
+                    if (response.code == 200) {
+                        //Swal
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: response.message,
+                            showConfirmButton: true,
+                            //confirm button text
+                            confirmButtonText: 'Goto Dashboard',
+                        }).then((result) => {
+                            //check if result is true
+                            if (result.isConfirmed) {
+                                //redirect to dashboard
+                                window.location.href = response.redirect;
+                            } else {
+                                //redirect to dashboard
+                                window.location.href = "<?php echo url('/'); ?>";
+                            }
+                        });
+                    } else {
+                        //show error
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: response.message,
+                        });
+                    }
+                }
+            });
+        });
 
-  </script>
+
+
+        setTimeout(() => {
+            //check if user checked rememberMe
+            if (localStorage.getItem('rememberMe') == 'true') {
+                $('#email').val(localStorage.getItem('email'));
+                $('#password').val(localStorage.getItem('password'));
+                $('#rememberMe').prop('checked', true);
+            }
+        }, 700);
+
+        $("#rememberMe").change(function(e) {
+            e.preventDefault();
+            //check if is checked
+            if ($('#rememberMe').prop('checked')) {
+                //get email
+                var email = $('#email').val();
+                //get password
+                var password = $('#password').val();
+                //set email and password to local storage
+                localStorage.setItem('email', email);
+                localStorage.setItem('password', password);
+                //set rememberMe to true
+                localStorage.setItem('rememberMe', true);
+            } else {
+                //remove email and password from local storage
+                localStorage.removeItem('email');
+                localStorage.removeItem('password');
+                //set rememberMe to false
+                localStorage.setItem('rememberMe', false);
+            }
+        });
+    });
+</script>
   <?php
   endPushScript();
   extend("auth/layout/app","contentAuth");

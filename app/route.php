@@ -15,6 +15,7 @@ $route::post("/register-user", [AuthController::class,"register"]);
 
 //login route
 $route::get("/login", [HomeController::class,"login"]);
+$route::post("/login-user", [AuthController::class,"login"]);
 
 //Middleware route
 $route->middleware('user', function ($middleware) use ($route) {

@@ -12,19 +12,19 @@
                 <p class="mb-0">Enter your email and password to sign in</p>
               </div>
               <div class="card-body">
-                <form role="form">
+                <form role="form" action="" method="post" id="loginForm">
                   <div class="mb-3">
-                    <input type="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                    <input name="email" type="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
                   </div>
                   <div class="mb-3">
-                    <input type="email" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                    <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
                   </div>
                   <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="rememberMe">
                     <label class="form-check-label" for="rememberMe">Remember me</label>
                   </div>
                   <div class="text-center">
-                    <button type="button" class="btn btn-lg bg-gradient-success btn-lg w-100 mt-4 mb-0">Sign in</button>
+                    <button type="submit" class="btn btn-lg bg-gradient-success btn-lg w-100 mt-4 mb-0">Sign in</button>
                   </div>
                 </form>
               </div>
@@ -52,4 +52,82 @@
   </section>
   <?php
   endsection();
+  pushScript('scripts');
+  ?>
+  <script>
+    $(document).ready(function () {
+      $('#loginForm').submit(function (e) { 
+        e.preventDefault();
+        let form = $(this);
+        //ajax call to register user
+        $.ajax({
+              type: "POST",
+              url: "<?php echo url('/register-user')?>",
+              data: formData.serialize(),
+              dataType: "json",
+              beforeSend: function () {
+                  // Show loading spinner or message
+                    formData.block({
+                        message: '<div class="spinner-border text-success text-gradient" role="status"><span class="visually-hidden">Loading...</span></div>',
+                        overlayCSS: {
+                            background: '#fff',
+                            opacity: 0.8,
+                            cursor: 'wait'
+                        },
+                        css: {
+                            border: 0,
+                            padding: 0,
+                            backgroundColor: 'none'
+                        }
+                    });    
+              },
+              success: function (response) {
+                //unblock the form
+                  formData.unblock();
+                  //response if all works well
+                  if(response.code == 200)
+                  {
+                    //clear the form
+                    formData.trigger("reset");
+                      //show success message
+                      Swal.fire({
+                          title: 'Success',
+                          text: response.message,
+                          icon: 'success',
+                          confirmButtonText: 'Login'
+                      }).then((result) => {
+                          if (result.isConfirmed) {
+                              window.location.href = "<?php echo url('/')?>";
+                          }
+                      });
+                  }
+                  else if(response.code == 400)
+                  {
+                      //show error message
+                      Swal.fire({
+                          title: 'Error',
+                          text: response.message,
+                          icon: 'info',
+                          confirmButtonText: 'Wrong email or password'
+                      });
+                  }
+                  else if(response.code == 500)
+                  {
+                      //show error message
+                      Swal.fire({
+                          title: 'Error',
+                          text: response.message,
+                          icon: 'error',
+                          confirmButtonText: 'OK'
+                      });
+                  }
+              }
+          });
+        
+
+      });
+    });
+  </script>
+  <?php
+  endPushScript();
   extend("auth/layout/app","contentAuth");

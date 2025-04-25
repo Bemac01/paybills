@@ -8,6 +8,8 @@ use App\Core\Route;
 
 $route = new Route();
 $route::get("/", [HomeController::class,"index"]);
+//dashboard route
+$route::get("/dashboard", [HomeController::class,"dashboard"]);
 
 //register route
 $route::get("/register", [HomeController::class,"register"]);

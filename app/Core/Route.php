@@ -45,9 +45,9 @@ class Route extends MiddleWare
     public static function validateURL($uri, $controlargs, $middleware)
     {
         //check preg pass
-        if(preg_match_all('/\{[a-zA-Z0-9-_]+\}/', $uri, $matches))
+        if(preg_match_all('/\{[a-zA-Z0-9-_@]+\}/', $uri, $matches))
         {
-            $uri2 = preg_replace('/\{[a-zA-Z0-9-_]+\}/','([a-zA-Z0-9-_]+)', $uri);
+            $uri2 = preg_replace('/\{[a-zA-Z0-9-_@]+\}/','([a-zA-Z0-9-_@]+)', $uri);
 
             //escape
             $uri2 = str_replace('/','\/', $uri2);
@@ -223,8 +223,7 @@ class Route extends MiddleWare
                 {
                     //show error
                     throw new \Exception($response['error'], $response['code']);
-                    exit;
-                    
+                              
                 } 
             }    
         }

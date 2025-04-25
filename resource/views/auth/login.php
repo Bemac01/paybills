@@ -12,7 +12,7 @@
                 <p class="mb-0">Enter your email and password to sign in</p>
               </div>
               <div class="card-body">
-                <form role="form" action="" method="post" id="loginForm">
+                <form role="form" action="" method="post" id="loginUser">
                   <div class="mb-3">
                     <input name="email" type="email" class="form-control form-control-lg" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
                   </div>
@@ -55,77 +55,70 @@
   pushScript('scripts');
   ?>
   <script>
-    $(document).ready(function () {
-      $('#loginForm').submit(function (e) { 
-        e.preventDefault();
-        let form = $(this);
-        //ajax call to register user
-        $.ajax({
-              type: "POST",
-              url: "<?php echo url('/login-user')?>",
-              data: form.serialize(),
-              dataType: "json",
-              beforeSend: function () {
-                  // Show loading spinner or message
-                    form.block({
-                        message: '<div class="spinner-border text-success text-gradient" role="status"><span class="visually-hidden">Loading...</span></div>',
-                        overlayCSS: {
-                            background: '#fff',
-                            opacity: 0.8,
-                            cursor: 'wait'
-                        },
-                        css: {
-                            border: 0,
-                            padding: 0,
-                            backgroundColor: 'none'
-                        }
-                    });    
-              },
-              success: function (response) {
-                //unblock the form
-                  form.unblock();
-                  //response if all works well
-                  if(response.code == 200)
-                  {
-                    //clear the form
-                    formData.trigger("reset");
-                      //show success message
-                      Swal.fire({
-                          title: 'Success',
-                          text: response.message,
-                          icon: 'success'
-                      }).then((result) => {
-                          if (result.isConfirmed) {
-                              window.location.href = response.redirect;
+    $(document).ready(function() {
+
+          //login submit
+          $("#loginUser").submit(function(e) {
+              e.preventDefault();
+              let form = $(this);
+              //ajax
+              $.ajax({
+                  type: "POST",
+                  url: "<?php echo url('/login-user') ?>",
+                  data: form.serialize(),
+                  dataType: "json",
+                  beforeSend: () => {
+                      //show animation
+                      //block form
+                      form.block({
+                          message: '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>',
+                          overlayCSS: {
+                              backgroundColor: '#fff',
+                              opacity: 0.8,
+                              cursor: 'wait'
+                          },
+                          css: {
+                              border: 0,
+                              padding: 0,
+                              backgroundColor: 'none'
                           }
                       });
+                  },
+                  success: function(response) {
+                      //unblock form
+                      form.unblock();
+                      //check if response code is 200
+                      if (response.code == 200) {
+                          //Swal
+                          Swal.fire({
+                              icon: 'success',
+                              title: 'Success',
+                              text: response.message,
+                              showConfirmButton: true,
+                              //confirm button text
+                              confirmButtonText: 'Goto Dashboard',
+                          }).then((result) => {
+                              //check if result is true
+                              if (result.isConfirmed) {
+                                  //redirect to dashboard
+                                  window.location.href = response.redirect;
+                              } else {
+                                  //redirect to dashboard
+                                  window.location.href = "<?php echo url(''); ?>";
+                              }
+                          });
+                      } else {
+                          //show error
+                          Swal.fire({
+                              icon: 'error',
+                              title: 'Oops...',
+                              text: response.message,
+                          });
+                      }
                   }
-                  else if(response.code == 400)
-                  {
-                      //show error message
-                      Swal.fire({
-                          title: 'Error',
-                          text: response.message,
-                          icon: 'error',
-                          confirmButtonText: 'OK'
-                      });
-                  }
-                  else if(response.code == 500)
-                  {
-                      //show error message
-                      Swal.fire({
-                          title: 'Error',
-                          text: response.message,
-                          icon: 'error',
-                          confirmButtonText: 'OK'
-                      });
-                  }
-              }
+              });
           });
-        
 
-      });
-    });
   </script>
   <?php
   endPushScript();

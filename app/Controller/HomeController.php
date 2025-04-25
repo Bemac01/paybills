@@ -50,5 +50,11 @@ class HomeController
         echo 'blog';
     }
 
+    //dashboard method
+    public static function dashboard(Request $request)
+    {
+        echoS "dashboard";
+    }
+
 
 }

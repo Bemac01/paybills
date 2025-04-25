@@ -47,41 +47,44 @@ class AuthController
         }
     }
 
-    //login function
-    public static function login(Request $request)
-    {
-        try {
-            
-            $email = $request::input('email');
-            $password = $request::input('password');
-
-            $user = Model::getSingle("users", 'email', $email);
-          
-            //check if user exists
-            if(!$user)
-            {
-                response_json(['code' => 400, 'message' => 'User Not Registered']);
-            }
-        
-            //check if password is correct
-            if(!password_verify($password, $user->password))
-            {
-                response_json(['code' => 400, 'message' => 'Wrong Email or password']);
-                
-            }
-            
-           
-            $auth = new Authentication;
-            //check if user is logged in
-            if($auth->login('user'))
-            {
-                response_json(['code' => 200, 'message' => 'Login successful', 'redirect' => url('dashboard')]);
-            }
-            response_json(['code' => 500, 'message' => 'Something went wrong']);
-            
-        } catch (\Exception $e) {
-            response_json(['code' => 500, 'message' => $e->getMessage()]);
-        }
-    }
-
+       //login
+       public static function login(Request $request)
+       {
+           try {
+               $email = $request->input('email');
+               $password = $request->input('password');
+               //check if email exists
+               $user = Model::getSingle('users', 'email', $email);
+               if (!$user) {
+                   response_json(['code' => 400, 'message' => 'User does not exist']);
+               }
+               //password verify
+               if (!password_verify($password, $user->password)) {
+                   response_json(['code' => 400, 'message' => 'Invalid password']);
+               }
+               //login user
+               $auth = new Authentication;
+               if ($auth->login($user)) {
+                   //check if user role is admin
+                //    if ($user->role == 'admin') {
+                       response_json(['code' => 200, 'message' => 'Login successful', 'redirect' => url('dashboard')]);
+                //    } else {
+                //        response_json(['code' => 200, 'message' => 'Login successful', 'redirect' => url('user')]);
+                //    }
+               }
+               //if something goes wrong
+               response_json(['code' => 500, 'message' => 'Something went wrong']);
+           } catch (\Exception $e) {
+               response_json(['code' => 500, 'message' => $e->getMessage()]);
+           }
+       }
+   
+       //logout
+       public static function logout(Request $request)
+       {
+           $auth = new Authentication;
+           if ($auth->logout()) {
+               redirect('login');
+           }
+       }
 }

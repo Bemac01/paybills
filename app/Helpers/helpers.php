@@ -208,3 +208,17 @@ if (!function_exists('cleanPhone')) {
         return \App\Core\Component::cleanPhone($phone);
     }
 }
+
+//auth
+//check if function exists
+if (!function_exists('auth')) {
+    //auth
+    /*
+    * @return string
+    */
+    function auth()
+    {
+        $auth = new \App\Core\Authentication();
+        return $auth->instance();
+    }
+}

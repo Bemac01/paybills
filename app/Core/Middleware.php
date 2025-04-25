@@ -26,7 +26,7 @@ class MiddleWare
         $session = new Session;
         if(!$session->has('user'))
         {
-            return ['error'=> 'You are already logged in','code'=> 401, 'redirect' => '/login'];
+            return ['error'=> 'You are already logged in','code'=> 401, 'redirect' => 'login'];
         }
         //return true 
         return ['code' => 200];

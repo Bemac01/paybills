@@ -53,9 +53,7 @@ class HomeController
     //dashboard method
     public static function dashboard(Request $request)
     {
-        echo auth()->user()->first_name;
-        echo '<br/>';
-        echo auth()->checkAdmin() ? "Admin Dashboard" : "User Dashboard";
+        return view("pages/dashboard");
     }
 
 

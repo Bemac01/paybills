@@ -23,7 +23,7 @@ section("contentDashboard");
           <ul class="navbar-nav  justify-content-end">
             
             <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+              <a href="<?php echo url('logout'); ?>" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user text-dark me-sm-1"></i>
                 <span class="d-sm-inline d-none">Sign Out</span>
               </a>
@@ -58,7 +58,7 @@ section("contentDashboard");
                   <div class="row">
                     <div class="col-8 text-start">
                       <div class="icon icon-shape bg-white shadow text-center border-radius-2xl">
-                        <i class="ni ni-circle-05 text-dark text-gradient text-lg opacity-10" aria-hidden="true"></i>
+                        <i class="fas fa-sack-dollar text-dark text-gradient text-lg opacity-10" aria-hidden="true"></i>
                       </div>
                       <h5 class="text-white font-weight-bolder mb-0 mt-3">
                         1600
@@ -76,7 +76,7 @@ section("contentDashboard");
                   <div class="row">
                     <div class="col-8 text-start">
                       <div class="icon icon-shape bg-white shadow text-center border-radius-2xl">
-                        <i class="ni ni-active-40 text-dark text-gradient text-lg opacity-10" aria-hidden="true"></i>
+                        <i class="fas fa-exchange text-dark text-gradient text-lg opacity-10" aria-hidden="true"></i>
                       </div>
                       <h5 class="text-white font-weight-bolder mb-0 mt-3">
                         357
@@ -94,12 +94,12 @@ section("contentDashboard");
                   <div class="row">
                     <div class="col-8 text-start">
                       <div class="icon icon-shape bg-white shadow text-center border-radius-2xl">
-                        <i class="ni ni-active-40 text-dark text-gradient text-lg opacity-10" aria-hidden="true"></i>
+                        <i class="fas fa-handshake text-dark text-gradient text-lg opacity-10" aria-hidden="true"></i>
                       </div>
                       <h5 class="text-white font-weight-bolder mb-0 mt-3">
                         357
                       </h5>
-                      <span class="text-white text-sm">Total Transaction</span>
+                      <span class="text-white text-sm">Bonus</span>
                     </div>
                     <div class="col-4">
                       <p class="text-white text-sm text-end font-weight-bolder mt-auto mb-0">+124%</p>
@@ -115,12 +115,12 @@ section("contentDashboard");
                   <div class="row">
                     <div class="col-8 text-start">
                       <div class="icon icon-shape bg-white shadow text-center border-radius-2xl">
-                        <i class="ni ni-active-40 text-dark text-gradient text-lg opacity-10" aria-hidden="true"></i>
+                        <i class="fas fa-users text-dark text-gradient text-lg opacity-10" aria-hidden="true"></i>
                       </div>
                       <h5 class="text-white font-weight-bolder mb-0 mt-3">
                         357
                       </h5>
-                      <span class="text-white text-sm">Total Transaction</span>
+                      <span class="text-white text-sm">Total Referral</span>
                     </div>
                     <div class="col-4">
                       <p class="text-white text-sm text-end font-weight-bolder mt-auto mb-0">+124%</p>

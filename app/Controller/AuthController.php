@@ -17,22 +17,42 @@ class AuthController
             $phone = cleanPhone($request::input('phone'));
             $email = $request::input('email');
             $password = $request::input('password');
-            $user = Model::getSingle("users", 'email', $email);
             //check if user exists
-            if($user)
-            {
-                response_json(['code' => 400, 'message' => 'User already exists']);
-            }
-        
             $password = password_hash($password, PASSWORD_DEFAULT);
-            //arrange data to be inserted
-            $data = [
+
+             //arrange data to be inserted
+             $data = [
                 'first_name' => $first_name,
                 'last_name' => $last_name,
                 'phone' => $phone,
                 'email' => $email,
                 'password' => $password
             ];
+            
+            foreach($data as $key => $value){
+                if(empty($value))
+                {
+                    response_json(['code' => 400, 'message' => 'All fields are required']);
+                }
+             }
+
+
+            //check if email is valid
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+            {
+                response_json(['code' => 400, 'message' => 'Invalid email address']);
+            }
+
+
+            $user = Model::getSingle("users", 'email', $email);
+
+            if($user)
+            {
+                response_json(['code' => 400, 'message' => 'User already exists']);
+            }
+
+               
+          
             $userNew = Model::create("users", $data);
             if($userNew)
             {
@@ -54,6 +74,16 @@ class AuthController
                $email = $request->input('email');
                $password = $request->input('password');
                //check if email exists
+
+               if (empty($email) || empty($password)) {
+                   response_json(['code' => 400, 'message' => 'Email and password are required']);
+               }
+                //check if email is valid   
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                     response_json(['code' => 400, 'message' => 'Invalid email address']);
+                }
+
+                //check if user exists
                $user = Model::getSingle('users', 'email', $email);
                if (!$user) {
                    response_json(['code' => 400, 'message' => 'User does not exist']);
@@ -84,6 +114,7 @@ class AuthController
        {
            $auth = new Authentication;
            if ($auth->logout()) {
+    
                redirect('login');
            }
        }

@@ -2,6 +2,7 @@
 
 namespace App\Core;
 
+use App\Core\Session;
 
 class Authentication
 {
@@ -22,7 +23,7 @@ class Authentication
     public function logout()
     {
         $session = new Session;
-        $session->delete('user');
+        $session->destroy();
         return true;
     }
 

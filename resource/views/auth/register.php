@@ -132,7 +132,7 @@ pushScript("scripts");
                       Swal.fire({
                           title: 'Error',
                           text: response.message,
-                          icon: 'info',
+                          icon: 'error',
                           confirmButtonText: 'Try Again'
                       });
                   }

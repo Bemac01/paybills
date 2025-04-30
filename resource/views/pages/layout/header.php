@@ -7,7 +7,7 @@
   <!-- <link rel="apple-touch-icon" sizes="76x76" href="assets_admin/img/apple-icon.png"> -->
   <!-- <link rel="icon" type="image/png" href="assets_admin/img/favicon.png"> -->
   <title>
-    Nice Vest | dashboard
+    Paybills | dashboard
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
@@ -37,7 +37,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link  active" href="<?php echo url('dashboard'); ?>">
+          <a class="nav-link  active" href="<?php echo url('user/dashboard'); ?>">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="fas fa-home fa-md text-dark py-0 my-0"></i>
             </div>
@@ -49,15 +49,7 @@
           <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/profile.html">
-            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                <i class="fas fa-dollar text-dark my-0"></i>  
-            </div>
-            <span class="nav-link-text ms-1">Wallet</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link  " href="../pages/profile.html">
+          <a class="nav-link  " href="<?php echo url('user/wallet'); ?>">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="fas fa-plus text-dark"></i>
             </div>

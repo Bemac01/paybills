@@ -56,5 +56,12 @@ class HomeController
         return view("pages/dashboard");
     }
 
+    //wallet method 
+    public static function wallet(Request $request)
+    {
+        return view("pages/wallet");
+        // echo "<h1>Wallet</h1>";
+    }
+
 
 }

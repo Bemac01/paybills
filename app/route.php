@@ -25,7 +25,9 @@ $route->middleware('user', function ($middleware) use ($route) {
     //user route
     $route::get("/user", [HomeController::class,"user"], $middleware);
     //dashboard route
-    $route::get("/dashboard", [HomeController::class,"dashboard"], $middleware);
+    $route::get("/user/dashboard", [HomeController::class,"dashboard"], $middleware);
+    //wallet    
+    $route::get("/user/wallet", [HomeController::class,"wallet"], $middleware);
 });
 
 $route::get("/blog/{id}/{title}", [HomeController::class,"blog"]);

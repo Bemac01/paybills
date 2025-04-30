@@ -91,7 +91,6 @@ pushScript("scripts");
               data: formData.serialize(),
               dataType: "json",
               beforeSend: function () {
-                    
                   // Show loading spinner or message
                     formData.block({
                         message: '<div class="spinner-border text-success text-gradient" role="status"><span class="visually-hidden">Loading...</span></div>',

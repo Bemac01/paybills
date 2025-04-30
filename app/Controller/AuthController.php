@@ -97,7 +97,7 @@ class AuthController
                if ($auth->login($user)) {
                    //check if user role is admin
                 //    if ($user->role == 'admin') {
-                       response_json(['code' => 200, 'message' => 'Login successful', 'redirect' => url('dashboard')]);
+                       response_json(['code' => 200, 'message' => 'Login successful', 'redirect' => url('user/dashboard')]);
                 //    } else {
                 //        response_json(['code' => 200, 'message' => 'Login successful', 'redirect' => url('user')]);
                 //    }

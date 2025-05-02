@@ -110,42 +110,46 @@ pushScript("scripts");
               success: function (response) {
                 //unblock the form
                   formData.unblock();
+                  let notyf = new Notyf();
                   //response if all works well
                   if(response.code == 200)
                   {
                     //clear the form
                     formData.trigger("reset");
                       //show success message
-                      Swal.fire({
-                          title: 'Success',
-                          text: response.message,
-                          icon: 'success',
-                          confirmButtonText: 'Login'
-                      }).then((result) => {
-                          if (result.isConfirmed) {
-                              window.location.href = "<?php echo url('/login')?>";
-                          }
-                      });
+
+                      
+                      notyf.success({
+                        message: response.message,
+                        position: {
+                            x: 'center',
+                            y: 'center'
+                        }
+                    });
+                
+                    window.location.href = "<?php echo url('/login')?>";
                   }
                   else if(response.code == 400)
                   {
                       //show error message
-                      Swal.fire({
-                          title: 'Error',
-                          text: response.message,
-                          icon: 'error',
-                          confirmButtonText: 'Try Again'
-                      });
+                      notyf.error({
+                            message: response.message,
+                            position: {
+                                x: 'center',
+                                y: 'top'
+                            }
+                        });
                   }
                   else if(response.code == 500)
                   {
                       //show error message
-                      Swal.fire({
-                          title: 'Error',
-                          text: response.message,
-                          icon: 'error',
-                          confirmButtonText: 'OK'
-                      });
+                      notyf.error({
+                            message: response.message,
+                            position: {
+                                x: 'center',
+                                y: 'top'
+                            }
+                        });
                   }
               }
           });

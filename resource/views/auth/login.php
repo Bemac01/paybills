@@ -83,32 +83,28 @@
                 success: function(response) {
                     //unblock form
                     form.unblock();
+                    let notyf = new Notyf();
                     //check if response code is 200
                     if (response.code == 200) {
-                        //Swal
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success',
-                            text: response.message,
-                            showConfirmButton: true,
-                            //confirm button text
-                            confirmButtonText: 'Goto Dashboard',
-                        }).then((result) => {
-                            //check if result is true
-                            if (result.isConfirmed) {
-                                //redirect to dashboard
-                                window.location.href = response.redirect;
-                            } else {
-                                //redirect to dashboard
-                                window.location.href = "<?php echo url('/'); ?>";
-                            }
-                        });
+
+                      notyf.success({
+                        message: response.message,
+                        position: {
+                            x: 'center',
+                            y: 'center'
+                        }
+                    });
+                
+                    window.location.href = response.redirect;
+                          
                     } else {
                         //show error
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: response.message,
+                        notyf.error({
+                            message: response.message,
+                            position: {
+                                x: 'center',
+                                y: 'top'
+                            }
                         });
                     }
                 }

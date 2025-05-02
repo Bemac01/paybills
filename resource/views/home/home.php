@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
   <!-- <link rel="icon" type="image/png" href="assets/img/favicon.png"> -->
   <title>
-    Nice vest
+    Paybills
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,800" rel="stylesheet" />
@@ -328,7 +328,11 @@
             </ul>
           </li>
           <li class="nav-item ms-lg-auto">
-            <a href="<?php echo esc_url('login'); ?>" class="btn btn-sm btn-outline-white btn-round mb-0 me-1 mt-2 mt-md-0">My Account</a>
+            <?php if(!$action('user')->user()) { ?>
+              <a href="<?php echo esc_url('login'); ?>" class="btn btn-sm btn-outline-white btn-round mb-0 me-1 mt-2 mt-md-0">My Account</a>
+            } else { ?>
+              <a href="<?php echo esc_url('user/dashboard'); ?>" class="btn btn-sm btn-outline-white btn-round mb-0 me-1 mt-2 mt-md-0">Dashboard</a>
+            <?php } ?>
           </li>
           <li class="nav-item my-auto ms-3 ms-lg-0">
             <a href="<?php echo esc_url('register'); ?>" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Get started</a>

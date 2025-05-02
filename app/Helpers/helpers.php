@@ -183,6 +183,19 @@ if (!function_exists('url')) {
     }
 }
 
+//assets
+//check if function exists
+if (!function_exists('assets')) {
+    //url
+    /*
+    * @return string
+    */
+    function assets($path)
+    {
+        return \App\Core\Component::assets($path);
+    }
+}
+
 //response_json
 //check if function exists
 if (!function_exists('response_json')) {

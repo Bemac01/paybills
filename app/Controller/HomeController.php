@@ -63,5 +63,11 @@ class HomeController
         // echo "<h1>Wallet</h1>";
     }
 
+    //profile method
+    public static function profile(Request $request)
+    {
+        return view("pages/profile");
+        // echo "<h1>Profile</h1>";
+    }
 
 }

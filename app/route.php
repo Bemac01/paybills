@@ -32,6 +32,11 @@ $route->middleware('user', function ($middleware) use ($route) {
     $route::get("/user/profile", [HomeController::class,"profile"], $middleware);
     //transaction
     $route::get("/user/transactions", [HomeController::class,"transactions"], $middleware);
+    //plans
+    $route::get("/user/plan", [HomeController::class,"plan"], $middleware);
+    //withrawal
+    $route::get("/user/withdraw", [HomeController::class,"withdraw"], $middleware);
+
 });
 
 $route::get("/blog/{id}/{title}", [HomeController::class,"blog"]);

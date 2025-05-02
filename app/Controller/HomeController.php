@@ -70,4 +70,22 @@ class HomeController
         // echo "<h1>Profile</h1>";
     }
 
+    //transactions
+    public static function transactions(Request $request)
+    {
+        return view("pages/transactions");
+    }
+
+    //plan
+    public static function plan(Request $request)
+    {
+        return view("pages/plan");
+    }
+
+    //withdraw method
+    public static function withdraw(Request $request)
+    {
+        return view("pages/withdraw");
+    }
+
 }

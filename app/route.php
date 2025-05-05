@@ -2,6 +2,7 @@
 
 use App\Controller\AuthController;
 use App\Controller\HomeController;
+use App\Controller\UserController;
 use App\Core\Request;
 use App\Core\Route;
 
@@ -25,17 +26,17 @@ $route->middleware('user', function ($middleware) use ($route) {
     //user route
     $route::get("/user", [HomeController::class,"user"], $middleware);
     //dashboard route
-    $route::get("/user/dashboard", [HomeController::class,"dashboard"], $middleware);
+    $route::get("/user/dashboard", [UserController::class,"dashboard"], $middleware);
     //wallet    
-    $route::get("/user/wallet", [HomeController::class,"wallet"], $middleware);
+    $route::get("/user/wallet", [UserController::class,"wallet"], $middleware);
     //profile
-    $route::get("/user/profile", [HomeController::class,"profile"], $middleware);
+    $route::get("/user/profile", [UserController::class,"profile"], $middleware);
     //transaction
-    $route::get("/user/transactions", [HomeController::class,"transactions"], $middleware);
+    $route::get("/user/transactions", [UserController::class,"transactions"], $middleware);
     //plans
-    $route::get("/user/plan", [HomeController::class,"plan"], $middleware);
+    $route::get("/user/plan", [UserController::class,"plan"], $middleware);
     //withrawal
-    $route::get("/user/withdraw", [HomeController::class,"withdraw"], $middleware);
+    $route::get("/user/withdraw", [UserController::class,"withdraw"], $middleware);
 
 });
 

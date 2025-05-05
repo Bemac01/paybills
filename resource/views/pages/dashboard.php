@@ -21,7 +21,7 @@ section("contentDashboard");
           <div class="row">
             <div class="col-lg-6 col-md-6 col-12">
               <div class="card">
-                <span class="mask  bg-gradient-success opacity-10 border-radius-lg"></span>
+                <span class="mask  bg-gradient-info opacity-10 border-radius-lg"></span>
                 <div class="card-body p-3 position-relative">
                   <div class="row">
                     <div class="col-8 text-start">
@@ -78,7 +78,7 @@ section("contentDashboard");
             </div>
             <div class="col-lg-6 col-md-6 col-12 mt-4 mt-md-3">
               <div class="card">
-                <span class="mask bg-gradient-success opacity-10 border-radius-lg"></span>
+                <span class="mask bg-gradient-info opacity-10 border-radius-lg"></span>
                 <div class="card-body p-3 position-relative">
                   <div class="row">
                     <div class="col-8 text-start">

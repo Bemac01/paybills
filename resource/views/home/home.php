@@ -328,11 +328,9 @@
             </ul>
           </li>
           <li class="nav-item ms-lg-auto">
-            <?php if(!$action('user')->user()) { ?>
+          
               <a href="<?php echo esc_url('login'); ?>" class="btn btn-sm btn-outline-white btn-round mb-0 me-1 mt-2 mt-md-0">My Account</a>
-            } else { ?>
-              <a href="<?php echo esc_url('user/dashboard'); ?>" class="btn btn-sm btn-outline-white btn-round mb-0 me-1 mt-2 mt-md-0">Dashboard</a>
-            <?php } ?>
+           
           </li>
           <li class="nav-item my-auto ms-3 ms-lg-0">
             <a href="<?php echo esc_url('register'); ?>" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Get started</a>
@@ -341,11 +339,12 @@
       </div>
     </div>
   </nav>
+  
   <!-- End Navbar -->
   <!-- -------- START HEADER 7 w/ text and video ------- -->
   <header class="bg-gradient-dark">
     <div class="page-header min-vh-75" style="background-image: url('assets/img/office-dark.jpg');">
-      <span class="mask bg-gradient-success opacity-8"></span>
+      <span class="mask bg-gradient-info opacity-8"></span>
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8 text-center mx-auto my-auto">
@@ -381,6 +380,7 @@
       </div>
     </div>
   </header>
+  <script defer src="https://www.livecoinwatch.com/static/lcw-widget.js"></script> <div class="livecoinwatch-widget-5" lcw-base="USD" lcw-color-tx="#999999" lcw-marquee-1="coins" lcw-marquee-2="movers" lcw-marquee-items="10" ></div>
   <!-- -------- END HEADER 7 w/ text and video ------- -->
   <!-- Section with four info areas left & one card right with image and waves -->
   <section class="py-7">
@@ -504,6 +504,7 @@
       </div>
     </div>
   </section>
+  
   <!-- END Section with four info areas left & one card right with image and waves -->
   <!-- -------- START Features w/ pattern background & stats & rocket -------- -->
   <section class="pt-sm-8 pb-5 position-relative bg-gradient-success">

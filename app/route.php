@@ -18,6 +18,9 @@ $route::post("/register-user", [AuthController::class,"register"]);
 $route::get("/login", [HomeController::class,"login"]);
 $route::post("/login-user", [AuthController::class,"login"]);
 
+//address route
+$route::post("/address", [AuthController::class,"address"]);
+
 //logout route
 $route::get("/logout", [AuthController::class,"logout"]);
 

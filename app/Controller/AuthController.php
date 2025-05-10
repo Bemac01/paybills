@@ -118,4 +118,23 @@ class AuthController
                redirect('login');
            }
        }
+
+       //address method
+       public static function address(Request $request)
+       {
+            $token = $request::input('token');
+            $amount = $request::input('amount');
+
+           $wallet = Model::getTable('wallet');
+
+           if(isset($token) && !empty($token)) 
+           {
+                response_json([
+                    'code' => 200,
+                    'address' => $wallet[$token]->address,
+                    'amount' => $amount,
+                    'token_id' => $token]);
+           }
+
+       }
 }

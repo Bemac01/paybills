@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Core\Request;
+use App\Core\Model;
+
 
 class UserController 
 {
@@ -15,7 +17,10 @@ class UserController
     //wallet method 
     public static function wallet(Request $request)
     {
-        return view("pages/wallet");
+        $title = "Deposit";
+
+        $wallet = Model::getTable('wallet');
+        return view("pages/wallet", compact('wallet','title'));
         // echo "<h1>Wallet</h1>";
     }
 
@@ -40,8 +45,9 @@ class UserController
 
     //withdraw method
     public static function withdraw(Request $request)
-    {
-        return view("pages/withdraw");
+    {   
+        $title = "Withdrawal";
+        return view("pages/withdraw", compact('title'));
     }
 
 }

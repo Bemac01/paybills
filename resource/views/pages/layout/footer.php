@@ -1,5 +1,5 @@
 <!--   Core JS Files   -->
-<script src="<?php echo assets('assets_admin/js/core/popper.min.js'); ?>"></script>
+  <script src="<?php echo assets('assets_admin/js/core/popper.min.js'); ?>"></script>
   <script src="<?php echo assets('assets_admin/js/core/bootstrap.min.js'); ?>"></script>
   <script src="<?php echo assets('assets_admin/js/plugins/perfect-scrollbar.min.js'); ?>"></script>
   <script src="<?php echo assets('assets_admin/js/plugins/smooth-scrollbar.min.js'); ?>"></script>

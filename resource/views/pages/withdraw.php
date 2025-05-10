@@ -1,4 +1,7 @@
 <?php
+pushScript("headerTitle");
+echo $title;
+endPushScript(); 
 section("contentDashboard");
 ?>
 
@@ -17,94 +20,25 @@ section("contentDashboard");
     <!-- End Navbar -->
 
     <!-- content starts here -->
-    <div class="container ">
-          <h2 class="text-center mb-5">Choose Your Perfect Plan</h2>
-          <div class="row justify-content-center">
-              <!-- Basic Plan -->
-              <div class="col-lg-3">
-                  <div class="card pricing-card h-100">
-                      <div class="card-header pricing-header basic-header p-4">
-                          <h3 class="card-title text-center mb-0">Basic</h3>
-                      </div>
-                      <div class="card-body p-4">
-                          <h2 class="card-title text-center mb-4">$19<small class="text-muted">/mo</small></h2>
-                          <ul class="feature-list text-center mb-4">
-                              <li>5 Projects</li>
-                              <li>20 GB Storage</li>
-                              <li>Basic Support</li>
-                              <li>1 User</li>
-                          </ul>
-                          <div class="text-center">
-                              <a href="#" class="btn btn-outline-primary btn-custom">Choose Plan</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-              <!-- Pro Plan -->
-              <div class="col-lg-3">
-                  <div class="card pricing-card h-100">
-                      <div class="card-header pricing-header pro-header p-4">
-                          <h3 class="card-title text-center mb-0">Pro</h3>
-                      </div>
-                      <div class="card-body p-4">
-                          <h2 class="card-title text-center mb-4">$49<small class="text-muted">/mo</small></h2>
-                          <ul class="feature-list text-center mb-4">
-                              <li>15 Projects</li>
-                              <li>50 GB Storage</li>
-                              <li>Priority Support</li>
-                              <li>5 Users</li>
-                          </ul>
-                          <div class="text-center">
-                              <a href="#" class="btn btn-primary btn-custom">Choose Plan</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-              <!-- Enterprise Plan -->
-              <div class="col-lg-3">
-                  <div class="card pricing-card h-100">
-                      <div class="card-header pricing-header enterprise-header p-4">
-                          <h3 class="card-title text-center mb-0">Enterprise</h3>
-                      </div>
-                      <div class="card-body p-4">
-                          <h2 class="card-title text-center mb-4">$99<small class="text-muted">/mo</small></h2>
-                          <ul class="feature-list text-center mb-4">
-                              <li>Unlimited Projects</li>
-                              <li>500 GB Storage</li>
-                              <li>24/7 Support</li>
-                              <li>Unlimited Users</li>
-                          </ul>
-                          <div class="text-center">
-                              <a href="#" class="btn btn-success btn-custom">Choose Plan</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-              <!-- golden Plan -->
-              <div class="col-lg-3">
-                  <div class="card pricing-card h-100">
-                      <div class="card-header pricing-header enterprise-header p-4">
-                          <h3 class="card-title text-center mb-0">Enterprise</h3>
-                      </div>
-                      <div class="card-body p-4">
-                          <h2 class="card-title text-center mb-4">$99<small class="text-muted">/mo</small></h2>
-                          <ul class="feature-list text-center mb-4">
-                              <li>Unlimited Projects</li>
-                              <li>500 GB Storage</li>
-                              <li>24/7 Support</li>
-                              <li>Unlimited Users</li>
-                          </ul>
-                          <div class="text-center">
-                              <a href="#" class="btn btn-success btn-custom">Choose Plan</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+    <!-- Button trigger modal -->
+       <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Enter Amonut</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="lead" id="display"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Next</button>
+            </div>
+            </div>
+        </div>
+        </div>
+        
+        <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>
    </main>
    <style>
           /* styling for pricing page */

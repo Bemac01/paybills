@@ -328,13 +328,19 @@
             </ul>
           </li>
           <li class="nav-item ms-lg-auto">
-          
+          <?php if(auth()->checkLogin()) { ?>
+            <a href="<?php echo esc_url('user/dashboard'); ?>" class="btn btn-sm btn-outline-white btn-round mb-0 me-1 mt-2 mt-md-0">Dashboard</a>
+          <?php } else { ?>
               <a href="<?php echo esc_url('login'); ?>" class="btn btn-sm btn-outline-white btn-round mb-0 me-1 mt-2 mt-md-0">My Account</a>
-           
+          <?php } ?>
           </li>
+          <?php if(auth()->checkLogin()) { ?>
+           <li>    </li>
+          <?php } else { ?>
           <li class="nav-item my-auto ms-3 ms-lg-0">
             <a href="<?php echo esc_url('register'); ?>" class="btn btn-sm  bg-white  btn-round mb-0 me-1 mt-2 mt-md-0">Get started</a>
           </li>
+          <?php } ?>
         </ul>
       </div>
     </div>
